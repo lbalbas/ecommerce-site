@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 export default Product;
 
 type Product = {
@@ -5,4 +6,9 @@ type Product = {
 	name: string;
 	desc: string;
 	price: number;
+	img: string;
+};
+
+export type ChildrenProps = {
+	children: ReactNode;
 };

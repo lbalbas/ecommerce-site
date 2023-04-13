@@ -1,6 +1,7 @@
 import Image from "next/image";
 import type Product from "../utils/globalTypes";
 import { useCart } from "../context/CartContext";
+import Link from "next/link";
 
 type Props = {
 	key: any;
@@ -8,22 +9,15 @@ type Props = {
 };
 
 const ProductItem = (props: Props) => {
-	const { name, price, desc } = props.data;
+	const { name, price, img, id } = props.data;
 	const { addItemToCart } = useCart();
 
 	return (
-		<div className="w-full h-64">
+		<Link href={"/shop/" + id} className="group h-64">
+			<Image alt={name} src={img} width={120} height={120} />
 			{name}
-			{desc}
-			<h3>${price}</h3>
-			<button
-				onClick={() => {
-					addItemToCart(props.data);
-				}}
-			>
-				Add to Cart
-			</button>
-		</div>
+			<h3 className="group-hover:block hidden">${price}</h3>
+		</Link>
 	);
 };
 

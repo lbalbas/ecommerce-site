@@ -1,4 +1,5 @@
 import type Product from "../utils/globalTypes";
+import type { ChildrenProps } from "../utils/globalTypes";
 import { useContext, createContext, ReactNode, useState } from "react";
 import { arrayBuffer } from "node:stream/consumers";
 
@@ -6,10 +7,6 @@ type cartContext = {
 	itemsOnCart: Product[];
 	addItemToCart: (arg0: Product) => void;
 	checkOut: () => void;
-};
-
-type Props = {
-	children: ReactNode;
 };
 
 const cartContextDefault: cartContext = {
@@ -24,7 +21,7 @@ export function useCart() {
 	return useContext(CartContext);
 }
 
-export function CartProvider({ children }: Props) {
+export function CartProvider({ children }: ChildrenProps) {
 	const [itemsOnCart, setItemsOnCart] = useState<Product[]>([]);
 
 	const addItemToCart = (item: Product) => {

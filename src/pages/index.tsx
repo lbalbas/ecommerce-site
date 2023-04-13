@@ -1,7 +1,32 @@
 import { Inter } from "next/font/google";
+import FeaturedItems from "@/components/FeaturedItems";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-	return <div>index</div>;
+	return (
+		<div className="flex gap-6 flex-col">
+			<div className="h-80 grid gap-4 md:gap-6 grid-cols-1 md:grid-cols-3">
+				<div className="w-full grid row-span-2 gap-4 md:gap-6 grid-cols-2 md:grid-rows-2 md:grid-cols-1">
+					<Link
+						className="w-full bg-cyan-50 flex rounded-2xl justify-center items-center"
+						href="/"
+					>
+						Categories
+					</Link>
+					<Link
+						className="w-full bg-cyan-50 md:row-start-2 rounded-2xl flex justify-center items-center"
+						href="/shop"
+					>
+						All Products
+					</Link>
+				</div>
+				<div className="row-start-1 bg-black rounded-2xl md:col-start-2 md:col-end-4 row-span-2">
+					Carousel
+				</div>
+			</div>
+			<FeaturedItems />
+		</div>
+	);
 }
