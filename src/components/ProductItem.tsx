@@ -2,11 +2,7 @@ import Image from "next/image";
 import type Product from "../utils/globalTypes";
 import { useCart } from "../context/CartContext";
 import Link from "next/link";
-
-type Props = {
-	key: any;
-	data: Product;
-};
+import type {Props} from "../utils/globalTypes";
 
 const ProductItem = (props: Props) => {
 	const { name, price, img, id } = props.data;

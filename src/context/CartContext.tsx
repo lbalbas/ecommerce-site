@@ -1,5 +1,5 @@
 import type Product from "../utils/globalTypes";
-import type { ChildrenProps } from "../utils/globalTypes";
+import type { Props } from "../utils/globalTypes";
 import { useContext, createContext, ReactNode, useState } from "react";
 import { arrayBuffer } from "node:stream/consumers";
 
@@ -21,7 +21,7 @@ export function useCart() {
 	return useContext(CartContext);
 }
 
-export function CartProvider({ children }: ChildrenProps) {
+export function CartProvider({ children }: Props) {
 	const [itemsOnCart, setItemsOnCart] = useState<Product[]>([]);
 
 	const addItemToCart = (item: Product) => {

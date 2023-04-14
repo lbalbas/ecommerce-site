@@ -9,6 +9,7 @@ type Product = {
 	img: string;
 };
 
-export type ChildrenProps = {
-	children: ReactNode;
+export type Props = {
+	children?: ReactNode;
+	data?: Product;
 };
