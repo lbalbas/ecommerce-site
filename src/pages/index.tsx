@@ -1,6 +1,7 @@
 import { Inter } from "next/font/google";
 import FeaturedItems from "@/components/FeaturedItems";
 import Link from "next/link";
+import Carousel from "@/components/Carousel";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,9 +23,7 @@ export default function Home() {
 						All Products
 					</Link>
 				</div>
-				<div className="row-start-1 bg-black rounded-2xl md:col-start-2 md:col-end-4 row-span-2">
-					Carousel
-				</div>
+				<Carousel />
 			</div>
 			<FeaturedItems />
 		</div>
