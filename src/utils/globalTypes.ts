@@ -11,5 +11,9 @@ type Product = {
 
 export type Props = {
 	children?: ReactNode;
-	data?: Product;
+};
+
+export type ProductProps = {
+	children?: ReactNode;
+	data: Product;
 };
