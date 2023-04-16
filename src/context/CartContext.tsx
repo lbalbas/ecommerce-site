@@ -2,6 +2,7 @@ import type Product from "../utils/globalTypes";
 import type { Props } from "../utils/globalTypes";
 import { useContext, createContext, ReactNode, useState } from "react";
 import { arrayBuffer } from "node:stream/consumers";
+import { toast } from "react-toastify";
 
 type cartContext = {
 	itemsOnCart: Product[];
@@ -28,6 +29,16 @@ export function CartProvider({ children }: Props) {
 		const newCart: Product[] = itemsOnCart;
 		newCart.push(item);
 		setItemsOnCart(newCart);
+		toast("🦄 Wow so easy!", {
+			position: "top-right",
+			autoClose: 5000,
+			hideProgressBar: false,
+			closeOnClick: true,
+			pauseOnHover: true,
+			draggable: true,
+			progress: undefined,
+			theme: "light",
+		});
 	};
 
 	const checkOut = () => {
