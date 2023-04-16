@@ -1,4 +1,4 @@
-import type { Props } from '../utils/globalTypes'
+import type { Props } from "../utils/globalTypes";
 import Footer from "./Footer";
 import Header from "./Header";
 
