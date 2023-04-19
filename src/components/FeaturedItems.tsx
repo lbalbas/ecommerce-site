@@ -49,7 +49,7 @@ const FeaturedItems = () => {
 
 	return (
 		<div className="w-full gap-2 flex flex-col">
-			<h3>Featured Items</h3>
+			<h3 className="font-bold tracking-wider uppercase">Featured Items</h3>
 			<div className="w-full gap-10 flex flex-wrap justify-start items-center">
 				{items.map((item) => {
 					return <ProductItem key={item.id} data={item} />;

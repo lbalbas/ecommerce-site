@@ -8,8 +8,8 @@ const ProductItem = (props: ProductProps) => {
 	return (
 		<Link href={"/shop/" + id} className="group h-64">
 			<Image className="rounded-2xl" alt={name} src={img} width={120} height={120} />
-			{name}
-			<h3 className="group-hover:block hidden">${price}</h3>
+			<p className="text-center">{name}</p>
+			<h3 className="text-center group-hover:block hidden">${price}</h3>
 		</Link>
 	);
 };

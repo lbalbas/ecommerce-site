@@ -9,14 +9,14 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
 	return (
-		<div className="flex gap-6 flex-col">
+		<div className="flex gap-8 flex-col">
 			<Head>
 				<title>Ecommerce</title>
 			</Head>
 			<div className="h-80 grid gap-4 md:gap-6 grid-cols-1 md:grid-cols-3">
 				<div className="w-full grid row-span-2 gap-4 md:gap-6 grid-cols-2 md:grid-rows-2 md:grid-cols-1">
 					<Link
-						className="relative w-full bg-cyan-50 flex rounded-2xl justify-center items-center"
+						className="relative w-full flex rounded-2xl justify-center items-center"
 						href="/"
 					>
 						<Image
@@ -25,12 +25,13 @@ export default function Home() {
 							fill
 							src="/placeimg_720_720_any.jpeg"
 						/>
-						<div className="absolute bg-gray-100 opacity-60 w-full h-full flex items-center justify-center">
-							<span className="opacity-100">Categories</span>
-						</div>
+						<div className="absolute rounded-2xl bg-vanilla opacity-50 w-full h-full flex items-center justify-center"></div>
+						<span className="absolute tracking-widest uppercase font-bold text-raisin">
+							Categories
+						</span>
 					</Link>
 					<Link
-						className="relative w-full bg-cyan-50 flex rounded-2xl justify-center items-center"
+						className="relative w-full flex rounded-2xl justify-center items-center"
 						href="/shop"
 					>
 						<Image
@@ -39,9 +40,10 @@ export default function Home() {
 							fill
 							src="/placeimg_720_720_any.jpeg"
 						/>
-						<div className="absolute bg-gray-100 opacity-60 w-full h-full flex items-center justify-center">
-							<span className="opacity-100">All Products</span>
-						</div>
+						<div className="absolute rounded-2xl bg-vanilla opacity-50 w-full h-full flex items-center justify-center"></div>
+						<span className="absolute tracking-widest uppercase font-bold text-raisin">
+							All Products
+						</span>
 					</Link>
 				</div>
 				<Carousel />
