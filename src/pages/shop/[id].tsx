@@ -1,5 +1,7 @@
 import { useRouter } from "next/router";
 import { useCart } from "@/context/CartContext";
+import Image from "next/image";
+import Button from '../../components/Button'
 
 const ProductPage = () => {
 	const { addItemToCart } = useCart();
@@ -13,11 +15,22 @@ const ProductPage = () => {
 		img: "/placeimg_720_720_any.jpeg",
 	};
 	return (
-		<div>
-			<p>Item: {id}</p>
-			<button onClick={() => addItemToCart(placeholder)}>
-				Add to Cart
-			</button>
+		<div className="grid grid-cols-2 lg:h-[60vh]">
+			<div className="relative w-full">
+				<Image alt="Product" src="/placeimg_720_720_any.jpeg" fill />
+			</div>
+			<div className="flex w-full justify-center items-center">
+				<div className="lg:w-5/6 flex-col flex">
+					<h1 className="text-2xl text-raisin font-bold">
+						{placeholder.name}
+					</h1>
+					<p className="my-4 text-gray-700">{placeholder.desc}</p>
+					<div className="flex justify-around">
+					 <Button>Qty</Button>
+					 <Button>Cart</Button>
+					</div>
+				</div>
+			</div>
 		</div>
 	);
 };
