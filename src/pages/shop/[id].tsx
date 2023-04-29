@@ -2,6 +2,8 @@ import { useRouter } from "next/router";
 import { useCart } from "@/context/CartContext";
 import Image from "next/image";
 import Button from '../../components/Button'
+import Counter from '../../components/ItemCounter'
+import { ShoppingCartIcon } from "@heroicons/react/24/solid";
 
 const ProductPage = () => {
 	const { addItemToCart } = useCart();
@@ -21,13 +23,16 @@ const ProductPage = () => {
 			</div>
 			<div className="flex w-full justify-center items-center">
 				<div className="lg:w-5/6 flex-col flex">
+					<div className="flex items-baseline">
 					<h1 className="text-2xl text-raisin font-bold">
 						{placeholder.name}
 					</h1>
+					<h3 className="mx-4 text-gray-600">${placeholder.price}</h3>
+					</div>
 					<p className="my-4 text-gray-700">{placeholder.desc}</p>
-					<div className="flex justify-around">
-					 <Button>Qty</Button>
-					 <Button>Cart</Button>
+					<div className="flex items-center w-full justify-end gap-8">
+					 <Counter />
+					 <Button><ShoppingCartIcon className="h-6 w-6" />Add to Cart</Button>
 					</div>
 				</div>
 			</div>
