@@ -47,10 +47,15 @@ const Shop = () => {
 	];
 
 	return (
-		<div>
-			{allItems.map((item) => {
-				return <ProductItem key={item.id} data={item} />;
-			})}
+		<div className="flex flex-col">
+			<h3 className="font-bold tracking-wider uppercase my-4">
+				All Items
+			</h3>
+			<div className="grid grid-cols-5">
+				{allItems.map((item) => {
+					return <ProductItem key={item.id} data={item} />;
+				})}
+			</div>
 		</div>
 	);
 };
