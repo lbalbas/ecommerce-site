@@ -17,17 +17,17 @@ export default function Home() {
 				<div className="w-full grid row-span-2 gap-4 md:gap-6 grid-cols-2 md:grid-rows-2 md:grid-cols-1">
 					<Link
 						className="relative w-full flex rounded-2xl justify-center items-center"
-						href="/"
+						href="/departments"
 					>
 						<Image
-							alt="Categories"
+							alt="Departments"
 							className="rounded-2xl"
 							fill
 							src="/placeimg_720_720_any.jpeg"
 						/>
 						<div className="absolute rounded-2xl bg-vanilla opacity-50 w-full h-full flex items-center justify-center"></div>
 						<span className="absolute tracking-widest uppercase font-bold text-raisin">
-							Categories
+							Departments
 						</span>
 					</Link>
 					<Link
