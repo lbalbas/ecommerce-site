@@ -1,11 +1,14 @@
-import { Props } from "../utils/globalTypes";
+import React from "react";
 
-const PrimaryButton = (props: Props) => {
-	return (
-		<button className="min-w-fit max-h-10 px-4 text-ivory font-bold py-1.5  flex items-center justify-around rounded-full bg-trueblue">
-			{props.children}
-		</button>
-	);
+const PrimaryButton = (props: React.ComponentProps<"button">) => {
+  return (
+    <button
+      onClick={props.onClick}
+      className="min-w-fit px-4 text-ivory font-bold py-1.5  flex items-center justify-around rounded-full bg-trueblue"
+    >
+      {props.children}
+    </button>
+  );
 };
 
 export default PrimaryButton;
