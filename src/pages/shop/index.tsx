@@ -74,14 +74,11 @@ const Shop = () => {
         })}
       </div>
       <button onClick={handlePrevious} disabled={currentPage === 0}>
-          Previous
-        </button>
-        <button
-          onClick={handleNext}
-          disabled={currentPage === pages.length - 1}
-        >
-          Next
-        </button>
+        Previous
+      </button>
+      <button onClick={handleNext} disabled={currentPage === pages.length - 1}>
+        Next
+      </button>
     </div>
   );
 };
