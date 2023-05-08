@@ -1,6 +1,13 @@
 import type Product from "../utils/globalTypes";
 import type { Props } from "../utils/globalTypes";
-import { useContext, createContext, ReactNode, useState, useMemo, useEffect } from "react";
+import {
+  useContext,
+  createContext,
+  ReactNode,
+  useState,
+  useMemo,
+  useEffect,
+} from "react";
 import { arrayBuffer } from "node:stream/consumers";
 import { toast } from "react-toastify";
 
@@ -25,27 +32,25 @@ export function useCart() {
 const CART_STORAGE_KEY = "cart";
 
 export function CartProvider({ children }: Props) {
-const [itemsOnCart, setItemsOnCart] = useState<Product[]>([]);
-const [hasMounted, setHasMounted] = useState(false);
+  const [itemsOnCart, setItemsOnCart] = useState<Product[]>([]);
+  const [hasMounted, setHasMounted] = useState(false);
 
-const updateLocalStorage = () => {
-  localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(itemsOnCart));
-};
+  const updateLocalStorage = () => {
+    localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(itemsOnCart));
+  };
 
-useEffect(() => {
-  if (!hasMounted) {
-    setHasMounted(true);
-    const storedCart = localStorage.getItem(CART_STORAGE_KEY);
-    setItemsOnCart(storedCart ? JSON.parse(storedCart) : []);
-  } else {
-    updateLocalStorage();
-  }
-}, [itemsOnCart, hasMounted]);
-
-
+  useEffect(() => {
+    if (!hasMounted) {
+      setHasMounted(true);
+      const storedCart = localStorage.getItem(CART_STORAGE_KEY);
+      setItemsOnCart(storedCart ? JSON.parse(storedCart) : []);
+    } else {
+      updateLocalStorage();
+    }
+  }, [itemsOnCart, hasMounted]);
 
   const addItemToCart = (item: Product) => {
-    setItemsOnCart(prevItemsOnCart => [...prevItemsOnCart, item]);
+    setItemsOnCart((prevItemsOnCart) => [...prevItemsOnCart, item]);
     toast("Item(s) Added", {
       position: "top-right",
       autoClose: 5000,

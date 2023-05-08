@@ -1,6 +1,10 @@
 import { useState } from "react";
 
-const Counter = (props: {stock: number, itemCount: number, setCounter: (a: number) => void}) => {
+const Counter = (props: {
+  stock: number;
+  itemCount: number;
+  setCounter: (a: number) => void;
+}) => {
   const { stock, itemCount, setCounter } = props;
   return (
     <div className="flex flex-col items-center">
