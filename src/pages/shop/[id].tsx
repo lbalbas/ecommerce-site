@@ -23,7 +23,7 @@ const ProductPage = () => {
   return (
     <div className="flex flex-col">
       <div className="flex items-center flex-col lg:grid lg:grid-cols-2 mb-6">
-        <div className="h-80 w-96 lg:h-[65vh] relative">
+        <div className="h-80 w-96 lg:w-full lg:h-[65vh] relative">
           <Image alt="Product" src="/placeimg_720_720_any.jpeg" fill />
         </div>
         <div className="flex w-full justify-center items-center">

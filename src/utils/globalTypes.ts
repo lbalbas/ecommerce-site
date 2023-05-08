@@ -16,4 +16,5 @@ export type Props = {
 export type ProductProps = {
   children?: ReactNode;
   data: Product;
+  list: boolean;
 };
