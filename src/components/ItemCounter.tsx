@@ -28,7 +28,7 @@ const Counter = (props: {
           +
         </button>
       </div>
-      <p className={(stock < 5 ? "text-jasper" : "") + " text-xs"}>
+      <p className={(stock < 5 ? "text-jasper" : "") + " text-center text-xs"}>
         {stock} left in stock
       </p>
     </div>

@@ -1,9 +1,20 @@
 import Head from "next/head";
 import { useCart } from "../context/CartContext";
 import ProductItem from "@/components/ProductItem";
+import Counter from "@/components/ItemCounter";
+import { XMarkIcon } from "@heroicons/react/24/solid";
 
 const cartPage = () => {
   const { itemsOnCart } = useCart();
+
+  const x = (a: number) => {
+    console.log(a);
+  };
+
+  const cartTotal = itemsOnCart.reduce(
+    (accumulator, item) => accumulator + item.price,
+    0
+  );
 
   return (
     <div className="w-full grid grid-cols-4">
@@ -12,10 +23,18 @@ const cartPage = () => {
       </Head>
       <div className="flex col-span-3 gap-2 flex-col overflow-y-scroll">
         {itemsOnCart.map((item) => {
-          return <ProductItem list={true} key={item.id} data={item} />;
+          return (
+            <div className="flex gap-4 items-center">
+              <XMarkIcon className="h-8 w-8 cursor-pointer" />
+              <ProductItem list={true} key={item.id} data={item} />
+              <Counter itemCount={2} stock={4} setCounter={x} />
+            </div>
+          );
         })}
       </div>
-      <div>Total</div>
+      <div className="flex items-end justify-between">
+        <strong>Total</strong> {cartTotal}
+      </div>
     </div>
   );
 };

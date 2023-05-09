@@ -5,10 +5,6 @@ import { useCart } from "../context/CartContext";
 
 const Cart = () => {
   const { itemsOnCart } = useCart();
-  const cartTotal = itemsOnCart.reduce(
-    (accumulator, item) => accumulator + item.price,
-    0
-  );
 
   return (
     <Link href="/cart" className="flex items-center w-24 justify-around">
@@ -22,9 +18,6 @@ const Cart = () => {
           ""
         )}
       </div>
-      <span className="hidden px-1 bg-red-100 text-center min-h-fit min-w-min rounded-xl text-xs">
-        ${cartTotal}
-      </span>
     </Link>
   );
 };
