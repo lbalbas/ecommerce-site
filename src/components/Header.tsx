@@ -14,9 +14,6 @@ const Header = () => {
       />
       <div className="flex">
         <Cart />
-        <Link href="/login">
-          <Button>Login</Button>
-        </Link>
       </div>
     </header>
   );

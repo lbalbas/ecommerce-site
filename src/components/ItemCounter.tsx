@@ -8,7 +8,7 @@ const Counter = (props: {
   const { stock, itemCount, setCounter } = props;
   return (
     <div className="flex flex-col items-center">
-      <h3>Quantity</h3>
+      <h3 className="font-bold">Quantity</h3>
       <div className="flex gap-2 text-lg">
         <button
           onClick={() => {
