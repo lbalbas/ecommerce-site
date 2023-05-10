@@ -22,20 +22,28 @@ const ProductPage = () => {
   };
   return (
     <div className="flex flex-col">
-      <div className="flex items-center flex-col lg:grid lg:grid-cols-2 mb-6">
-        <div className="h-80 w-96 lg:w-full lg:h-[65vh] relative">
-          <Image alt="Product" src="/placeimg_720_720_any.jpeg" fill />
+      <div className="flex items-center flex-col h-[75vh] lg:max-h-[600px] lg:grid lg:grid-cols-2 mb-6 justify-center">
+        <div className="h-80 w-80 lg:h-full lg:w-full grid place-items-center relative">
+          <Image
+            className="object-contain"
+            alt="Product"
+            src="/placeimg_720_720_any.jpeg"
+            sizes="(max-width: 800px) 50vw, (max-width: 400px) 33vw"
+            fill
+          />
         </div>
         <div className="flex w-full justify-center items-center">
-          <div className="mt-4 lg:mt-0 w-5/6 md:w-3/6 lg:w-5/6 flex-col flex">
-            <div className="flex justify-center lg:justify-start items-center lg:items-baseline">
+          <div className="mt-4 lg:mt-0 w-full md:w-3/6 lg:w-5/6 flex-col flex">
+            <div className="flex flex-col md:flex-row justify-center lg:justify-start items-center lg:items-baseline">
               <h1 className="text-2xl text-raisin font-bold">
                 {placeholder.name}
               </h1>
               <h3 className="mx-4 text-gray-600">${placeholder.price}</h3>
             </div>
-            <p className="my-2 lg:my-4 text-gray-700">{placeholder.desc}</p>
-            <div className="flex items-center w-full justify-around lg:justify-end gap-8">
+            <p className="my-2 text-center md:text-left lg:my-4 text-gray-700">
+              {placeholder.desc}
+            </p>
+            <div className="flex flex-col md:flex-row items-center w-full justify-around lg:justify-end gap-4 md:gap-8">
               <Counter
                 setCounter={setCounter}
                 itemCount={itemCount}
