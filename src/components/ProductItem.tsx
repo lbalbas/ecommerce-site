@@ -9,17 +9,13 @@ const ProductItem = (props: ProductProps) => {
     return (
       <Link
         href={"/shop/" + id}
-        className="group h-44 flex flex-col items-center"
+        className="group lg:h-56 flex flex-col items-center"
       >
-        <Image
-          className="rounded-2xl"
-          alt={name}
-          src={img}
-          width={175}
-          height={175}
-        />
-        <p className="text-center">{name}</p>
-        <p className="text-center group-hover:block hidden">${price}</p>
+        <div className="relative h-36 w-36 md:h-[175px] md:w-[175px]">
+          <Image className="rounded-2xl" alt={name} src={img} fill />
+        </div>
+        <p className="text-center font-bold lg:font-medium">{name}</p>
+        <p className="text-center group-hover:block lg:hidden">${price}</p>
       </Link>
     );
 
