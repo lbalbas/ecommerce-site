@@ -9,13 +9,13 @@ datasource db {
 
 model Items {
   id          BigInt       @id @default(autoincrement())
-  collection  BigInt       @unique(map: "Items_department_key")
+  collection  BigInt?      @unique(map: "Items_department_key")
   item        String       @db.VarChar
-  price       Float?
-  description String?
-  stock       BigInt?
-  thumbnail   String?
-  collections collections  @relation(fields: [collection], references: [id], onUpdate: NoAction)
+  price       Float
+  description String
+  stock       BigInt
+  thumbnail   String
+  collections collections? @relation(fields: [collection], references: [id], onDelete: Restrict, onUpdate: NoAction)
   images      images[]
   item_sizes  item_sizes[]
 }
