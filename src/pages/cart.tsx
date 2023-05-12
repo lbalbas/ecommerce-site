@@ -4,7 +4,7 @@ import ProductItem from "@/components/ProductItem";
 import Counter from "@/components/ItemCounter";
 import { XMarkIcon } from "@heroicons/react/24/solid";
 
-const cartPage = () => {
+const CartPage = () => {
   const { itemsOnCart } = useCart();
 
   const x = (a: number) => {
@@ -21,7 +21,7 @@ const cartPage = () => {
       <Head>
         <title>Your Shopping Cart</title>
       </Head>
-      <div className="flex col-span-3 gap-2 flex-col overflow-y-scroll">
+      <div className="max-h-[85vh] flex col-span-3 gap-6 flex-col overflow-y-scroll">
         {itemsOnCart.map((item) => {
           return (
             <div className="flex gap-4 items-center">
@@ -39,4 +39,4 @@ const cartPage = () => {
   );
 };
 
-export default cartPage;
+export default CartPage;
