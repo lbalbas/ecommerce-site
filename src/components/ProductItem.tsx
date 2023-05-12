@@ -20,13 +20,13 @@ const ProductItem = (props: ProductProps) => {
     );
 
   return (
-    <div className="w-9/12 gap-4 h-44 grid grid-cols-3">
+    <div className="w-9/12 gap-4 grid grid-cols-3">
       <div className="h-full w-full">
         <Link
           href={"/shop/" + id}
-          className="group relative h-44 flex flex-col items-center"
+          className="flex flex-col items-center"
         >
-          <Image className="rounded-2xl" alt={name} src={img} fill />
+          <Image className="rounded-2xl" alt={name} src={img} width={140} height={140} />
         </Link>
       </div>
       <div className="h-full w-full cols-span-2">
