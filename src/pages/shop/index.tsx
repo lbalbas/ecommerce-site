@@ -1,6 +1,7 @@
 import ProductItem from "../../components/ProductItem";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import { trpc } from '../../utils/trpc';
 
 const Shop = () => {
   const allItems = [
@@ -48,6 +49,7 @@ const Shop = () => {
     },
   ];
   const [currentPage, setCurrentPage] = useState(0);
+  const [items, setItems] = useState([]);
   const pages = paginate(allItems, 10);
   const router = useRouter();
 
@@ -56,6 +58,11 @@ const Shop = () => {
       setCurrentPage(parseInt(router.query.p) - 1);
     }
   }, [router.query.p]);
+
+  const hello = trpc.hello.useQuery({ text: 'client' });
+
+  if(!hello)
+    console.log(hello)
 
   const handlePrevious = () => {
     router.push({ query: { ...router.query, p: currentPage } });

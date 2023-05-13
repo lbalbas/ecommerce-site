@@ -4,8 +4,9 @@ import { CartProvider } from "@/context/CartContext";
 import Layout from "../components/layout";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { trpc } from '../utils/trpc';
 
-export default function App({ Component, pageProps }: AppProps) {
+const App = ({ Component, pageProps }: AppProps) => {
   return (
     <div className="bg-ivory text-raisin min-h-screen">
       <ToastContainer
@@ -28,3 +29,5 @@ export default function App({ Component, pageProps }: AppProps) {
     </div>
   );
 }
+
+export default trpc.withTRPC(App);
