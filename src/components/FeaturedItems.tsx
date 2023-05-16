@@ -1,37 +1,23 @@
 import Product from "@/utils/globalTypes";
 import ProductItem from "./ProductItem";
+import { useState, useEffect } from "react";
+import { trpc } from "../utils/trpc";
 
 const FeaturedItems = () => {
-  const items: Product[] = [
-    {
-      id: 1,
-      name: "Shirt",
-      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores ut iure vitae incidunt quidem dolore veniam nam tenetur, sapiente qui architecto ullam autem ipsam consequatur labore molestiae eligendi facere eius!",
-      price: 9.99,
-      img: "/placeimg_720_720_any.jpeg",
-    },
-    {
-      id: 2,
-      name: "Shirt",
-      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores ut iure vitae incidunt quidem dolore veniam nam tenetur, sapiente qui architecto ullam autem ipsam consequatur labore molestiae eligendi facere eius!",
-      price: 9.99,
-      img: "/placeimg_720_720_any.jpeg",
-    },
-    {
-      id: 3,
-      name: "Shirt",
-      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores ut iure vitae incidunt quidem dolore veniam nam tenetur, sapiente qui architecto ullam autem ipsam consequatur labore molestiae eligendi facere eius!",
-      price: 9.99,
-      img: "/placeimg_720_720_any.jpeg",
-    },
-    {
-      id: 4,
-      name: "Shirt",
-      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores ut iure vitae incidunt quidem dolore veniam nam tenetur, sapiente qui architecto ullam autem ipsam consequatur labore molestiae eligendi facere eius!",
-      price: 9.99,
-      img: "/placeimg_720_720_any.jpeg",
-    },
-  ];
+  const [items, setItems] = useState([]);
+
+  const allItems = trpc.featured.useQuery();
+
+  useEffect(() => {
+    if (allItems.data) {
+      setItems(allItems.data);
+      console.log(allItems.data);
+    }
+  }, [allItems.data]);
+
+  if (allItems.isLoading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="w-full gap-2 flex flex-col">
