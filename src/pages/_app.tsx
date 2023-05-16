@@ -4,7 +4,7 @@ import { CartProvider } from "@/context/CartContext";
 import Layout from "../components/layout";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { trpc } from '../utils/trpc';
+import { trpc } from "../utils/trpc";
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (
@@ -28,6 +28,6 @@ const App = ({ Component, pageProps }: AppProps) => {
       </CartProvider>
     </div>
   );
-}
+};
 
 export default trpc.withTRPC(App);
