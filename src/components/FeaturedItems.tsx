@@ -11,7 +11,6 @@ const FeaturedItems = () => {
   useEffect(() => {
     if (allItems.data) {
       setItems(allItems.data);
-      console.log(allItems.data);
     }
   }, [allItems.data]);
 
