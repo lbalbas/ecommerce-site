@@ -2,11 +2,14 @@ import type { ReactNode } from "react";
 export default Product;
 
 type Product = {
-  id: any;
-  name: string;
-  desc: string;
-  price: number;
-  img: string;
+  item: string;
+  price: string;
+  description: string;
+  stock: number;
+  thumbnail: string;
+  id: string;
+  collection?: string;
+  deparment?: string;
 };
 
 export type Props = {
