@@ -1,25 +1,32 @@
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useCart } from "@/context/CartContext";
 import Image from "next/image";
 import Button from "../../components/Button";
 import Counter from "../../components/ItemCounter";
 import { ShoppingCartIcon } from "@heroicons/react/24/solid";
 import FeaturedItems from "../../components/FeaturedItems";
+import { trpc } from "../../utils/trpc";
 
 const ProductPage = () => {
-  const [stock, setStock] = useState(5);
   const [itemCount, setCounter] = useState(1);
   const { addItemToCart } = useCart();
   const router = useRouter();
   const { id } = router.query;
-  const placeholder = {
-    id: id,
-    name: "Shirt",
-    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores ut iure vitae incidunt quidem dolore veniam nam tenetur, sapiente qui architecto ullam autem ipsam consequatur labore molestiae eligendi facere eius!",
-    price: 9.99,
-    img: "/placeimg_720_720_any.jpeg",
-  };
+  const [loading, setLoading] = useState(true);
+  const itemData = trpc.item.useQuery(
+    { id: id },
+    {
+      enabled: id !== undefined, // Enable the query only when id is defined
+    }
+  );
+
+  if (itemData.isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  const item = itemData.data;
+
   return (
     <div className="flex flex-col">
       <div className="flex items-center flex-col h-[75vh] lg:max-h-[600px] lg:grid lg:grid-cols-2 mb-6 justify-center">
@@ -35,30 +42,26 @@ const ProductPage = () => {
         <div className="flex w-full justify-center items-center">
           <div className="mt-4 lg:mt-0 w-full md:w-3/6 lg:w-5/6 flex-col flex">
             <div className="flex flex-col md:flex-row justify-center lg:justify-start items-center lg:items-baseline">
-              <h1 className="text-2xl text-raisin font-bold">
-                {placeholder.name}
-              </h1>
-              <h3 className="mx-4 text-gray-600">${placeholder.price}</h3>
+              <h1 className="text-2xl text-raisin font-bold">{item.item}</h1>
+              <h3 className="mx-4 text-gray-600">${item.price}</h3>
             </div>
             <p className="my-2 text-center md:text-left lg:my-4 text-gray-700">
-              {placeholder.desc}
+              {item.description}
             </p>
             <div className="flex flex-col md:flex-row items-center w-full justify-around lg:justify-end gap-4 md:gap-8">
               <Counter
                 setCounter={setCounter}
                 itemCount={itemCount}
-                stock={stock}
+                stock={item.stock}
               />
 
-              <Button onClick={() => addItemToCart(placeholder)}>
+              <Button onClick={() => addItemToCart(item)}>
                 <div className="w-full flex gap-2 items-center ">
                   <div className="flex w-full">
                     <ShoppingCartIcon className="h-6 w-6" />
                     Add to Cart
                   </div>
-                  <span className="text-xs">
-                    (${placeholder.price * itemCount})
-                  </span>
+                  <span className="text-xs">(${item.price * itemCount})</span>
                 </div>
               </Button>
             </div>
