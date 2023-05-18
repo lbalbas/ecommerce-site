@@ -25,7 +25,7 @@ export const appRouter = router({
   featured: procedure.query(async (id) => {
     const featured = await prisma.items.findMany({ take: 4 });
     await prisma.$disconnect(); // Disconnect from Prisma after getting the result
-    return convertBigIntsToStrings(featured);
+    return featured;
   }),
 });
 
