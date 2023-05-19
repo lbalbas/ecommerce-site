@@ -10,20 +10,20 @@ const transformItems = (items) => {
     return items.map((item) => ({
       price_data: {
         currency: "usd",
-        unit_amount: Math.floor(item.price) * 100,
+        unit_amount: item.price * 100,
         product_data: {
           name: item.item,
           description: item.description,
         },
       },
-      quantity: 1,
+      quantity: item.quantity,
     }));
 };
-const CartPage = () => {
-  const { itemsOnCart } = useCart();
 
+const CartPage = () => {
+  const { itemsOnCart, decrementItemQuantity, incrementItemQuantity, deleteItemFromCart } = useCart();
   const cartTotal = itemsOnCart.reduce(
-    (accumulator, item) => accumulator + item.price,
+    (accumulator, item) => accumulator + (parseFloat(item.price) * item.quantity),
     0
   );
 
@@ -58,15 +58,15 @@ const CartPage = () => {
         {itemsOnCart.map((item) => {
           return (
             <div className="flex gap-4 items-center">
-              <XMarkIcon className="h-8 w-8 cursor-pointer" />
+              <XMarkIcon onClick={()=>deleteItemFromCart(item.id)} className="h-8 w-8 cursor-pointer" />
               <ProductItem list={true} key={item.id} data={item} />
-              <Counter itemCount={2} stock={4} setCounter={x} />
+              <Counter itemCount={item.quantity} stock={item.stock} decrease={()=>decrementItemQuantity(item.id)} increase={()=>incrementItemQuantity(item.id)} />
             </div>
           );
         })}
       </div>
       <div className="flex items-end justify-between">
-        <strong>Total</strong> {cartTotal}
+        <strong>Total</strong> {cartTotal.toFixed(2)}
         <Button onClick={checkout}>Checkout</Button>
       </div>
     </div>

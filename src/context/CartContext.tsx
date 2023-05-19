@@ -15,12 +15,18 @@ type cartContext = {
   itemsOnCart: Product[];
   addItemToCart: (arg0: Product) => void;
   checkOut: () => void;
+  incrementItemQuantity: (arg0: string) => void;
+  decrementItemQuantity: (arg0: string) => void;
+  deleteItemFromCart: (arg0: string) => void;
 };
 
 const cartContextDefault: cartContext = {
   itemsOnCart: [],
   addItemToCart: () => {},
   checkOut: () => {},
+  incrementItemQuantity: () => {},
+  decrementItemQuantity: () => {},
+  deleteItemFromCart: () => {},
 };
 
 const CartContext = createContext<cartContext>(cartContextDefault);
@@ -63,6 +69,29 @@ export function CartProvider({ children }: Props) {
     });
   };
 
+  const incrementItemQuantity = (id: string) => {
+    const updatedItemsOnCart = [...itemsOnCart];
+    const item = updatedItemsOnCart.find((product) => product.id === id);
+    if (item) {
+      item.quantity += 1;
+      setItemsOnCart(updatedItemsOnCart);
+    }
+  };
+
+  const decrementItemQuantity = (id: string) => {
+    const updatedItemsOnCart = [...itemsOnCart];
+    const item = updatedItemsOnCart.find((product) => product.id === id);
+    if (item && item.quantity > 1) {
+      item.quantity -= 1;
+      setItemsOnCart(updatedItemsOnCart);
+    }
+  };
+
+  const deleteItemFromCart = (id: string) => {
+    const updatedItemsOnCart = itemsOnCart.filter((product) => product.id !== id);
+    setItemsOnCart(updatedItemsOnCart);
+  };
+
   const checkOut = () => {
     setItemsOnCart([]);
   };
@@ -72,8 +101,11 @@ export function CartProvider({ children }: Props) {
       itemsOnCart,
       addItemToCart,
       checkOut,
+      incrementItemQuantity,
+      decrementItemQuantity,
+      deleteItemFromCart, // Add this line
     }),
-    [itemsOnCart, addItemToCart, checkOut]
+    [itemsOnCart, addItemToCart, checkOut, incrementItemQuantity, decrementItemQuantity, deleteItemFromCart]
   );
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;

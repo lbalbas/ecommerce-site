@@ -3,26 +3,23 @@ import { useState } from "react";
 const Counter = (props: {
   stock: number;
   itemCount: number;
-  setCounter: (a: number) => void;
+  increase: () => void;
+  decrease: () => void;
 }) => {
-  const { stock, itemCount, setCounter } = props;
+  const { stock, itemCount, increase, decrease } = props;
   return (
     <div className="flex flex-col items-center">
       <h3 className="font-bold">Quantity</h3>
       <div className="flex gap-2 text-lg">
         <button
-          onClick={() => {
-            setCounter(itemCount - 1);
-          }}
+          onClick={decrease}
           disabled={itemCount - 1 <= 0}
         >
           -
         </button>
         {itemCount}
         <button
-          onClick={() => {
-            setCounter(itemCount + 1);
-          }}
+          onClick={increase}
           disabled={itemCount + 1 > stock}
         >
           +

@@ -24,9 +24,15 @@ const ProductPage = () => {
   if (itemData.isLoading) {
     return <div>Loading...</div>;
   }
-
+  const increaseItemCount = () => {
+    setCounter(itemCount + 1);
+  }
+  const decreaseItemCount = () => {
+    setCounter(itemCount - 1)
+  }
   const item = itemData.data;
-
+  item.quantity = itemCount;
+  
   return (
     <div className="flex flex-col">
       <div className="flex items-center flex-col h-[75vh] lg:max-h-[600px] lg:grid lg:grid-cols-2 mb-6 justify-center">
@@ -50,7 +56,8 @@ const ProductPage = () => {
             </p>
             <div className="flex flex-col md:flex-row items-center w-full justify-around lg:justify-end gap-4 md:gap-8">
               <Counter
-                setCounter={setCounter}
+                increase={increaseItemCount}
+                decrease={decreaseItemCount}
                 itemCount={itemCount}
                 stock={item.stock}
               />
