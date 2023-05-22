@@ -13,19 +13,29 @@ export const appRouter = router({
     .query(async (opts) => {
       const item = await prisma.items.findUnique({
         where: { id: opts.input.id },
-      }); // Wait for the result of main() function
-      await prisma.$disconnect(); // Disconnect from Prisma after getting the result
+      });
+      await prisma.$disconnect();
       return item;
     }),
   items: procedure.query(async () => {
-    const items = await prisma.items.findMany(); // Wait for the result of main() function
-    await prisma.$disconnect(); // Disconnect from Prisma after getting the result
+    const items = await prisma.items.findMany();
+    await prisma.$disconnect();
     return items;
   }),
   featured: procedure.query(async (id) => {
     const featured = await prisma.items.findMany({ take: 4 });
-    await prisma.$disconnect(); // Disconnect from Prisma after getting the result
+    await prisma.$disconnect(); 
     return featured;
+  }),
+  collections: procedure.query(async () => {
+    const collections = await prisma.collections.findMany()
+    await prisma.$disconnect();
+    return collections;
+  }),
+  deparments: procedure.query(async () => {
+    const departments = await prisma.departments.findMany()
+    await prisma.$disconnect();
+    return departments; 
   }),
 });
 
