@@ -1,8 +1,27 @@
+import {useEffect, useState} from 'react'
+import { trpc } from "../../utils/trpc";
 import Image from "next/image";
 import Link from "next/link";
 import Head from "next/head";
 
 const Departments = () => {
+  const [depts, setDepts] = useState([]);
+  const deptsData = trpc.departments.useQuery();
+
+  useEffect(()=>{
+    if( deptsData.data )
+      setDepts(deptsData.data)
+  },[deptsData.data])
+
+  if(deptsData.isLoading)
+    return (
+      <div>
+        <Head>
+          <title>Departments</title>
+        </Head>
+        Loading...
+      </div>)
+
   return (
     <div className="flex flex-col">
       <Head>

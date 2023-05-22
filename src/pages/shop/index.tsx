@@ -7,14 +7,13 @@ const Shop = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const [items, setItems] = useState([]);
   const router = useRouter();
+  const allItems = trpc.items.useQuery();
 
   useEffect(() => {
     if (router.query.p) {
       setCurrentPage(parseInt(router.query.p) - 1);
     }
   }, [router.query.p]);
-
-  const allItems = trpc.items.useQuery();
 
   useEffect(() => {
     if (allItems.data) {
