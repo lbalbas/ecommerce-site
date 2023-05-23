@@ -24,18 +24,18 @@ export const appRouter = router({
   }),
   featured: procedure.query(async (id) => {
     const featured = await prisma.items.findMany({ take: 4 });
-    await prisma.$disconnect(); 
+    await prisma.$disconnect();
     return featured;
   }),
   collections: procedure.query(async () => {
-    const collections = await prisma.collections.findMany()
+    const collections = await prisma.collections.findMany();
     await prisma.$disconnect();
     return collections;
   }),
-  deparments: procedure.query(async () => {
-    const departments = await prisma.departments.findMany()
+  departments: procedure.query(async () => {
+    const departments = await prisma.departments.findMany();
     await prisma.$disconnect();
-    return departments; 
+    return departments;
   }),
 });
 

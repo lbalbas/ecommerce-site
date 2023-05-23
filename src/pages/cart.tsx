@@ -7,33 +7,38 @@ import Button from "@/components/Button";
 import { loadStripe } from "@stripe/stripe-js";
 
 const transformItems = (items) => {
-    return items.map((item) => ({
-      price_data: {
-        currency: "usd",
-        unit_amount: item.price * 100,
-        product_data: {
-          name: item.item,
-          description: item.description,
-        },
+  return items.map((item) => ({
+    price_data: {
+      currency: "usd",
+      unit_amount: item.price * 100,
+      product_data: {
+        name: item.item,
+        description: item.description,
       },
-      quantity: item.quantity,
-    }));
+    },
+    quantity: item.quantity,
+  }));
 };
 
 const CartPage = () => {
-  const { itemsOnCart, decrementItemQuantity, incrementItemQuantity, deleteItemFromCart } = useCart();
+  const {
+    itemsOnCart,
+    decrementItemQuantity,
+    incrementItemQuantity,
+    deleteItemFromCart,
+  } = useCart();
   const cartTotal = itemsOnCart.reduce(
-    (accumulator, item) => accumulator + (parseFloat(item.price) * item.quantity),
+    (accumulator, item) => accumulator + parseFloat(item.price) * item.quantity,
     0
   );
 
   const checkout = async () => {
     const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
     const transfItems = transformItems(itemsOnCart);
-    const response = await fetch('/api/checkout_sessions', {
-      method: 'POST',
+    const response = await fetch("/api/checkout_sessions", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({ transfItems }),
     });
@@ -43,7 +48,7 @@ const CartPage = () => {
     if (result.error) {
       console.error(result.error.message);
     }
-  }
+  };
 
   const x = (a: number) => {
     console.log(a);
@@ -58,9 +63,17 @@ const CartPage = () => {
         {itemsOnCart.map((item) => {
           return (
             <div className="flex gap-4 items-center">
-              <XMarkIcon onClick={()=>deleteItemFromCart(item.id)} className="h-8 w-8 cursor-pointer" />
+              <XMarkIcon
+                onClick={() => deleteItemFromCart(item.id)}
+                className="h-8 w-8 cursor-pointer"
+              />
               <ProductItem list={true} key={item.id} data={item} />
-              <Counter itemCount={item.quantity} stock={item.stock} decrease={()=>decrementItemQuantity(item.id)} increase={()=>incrementItemQuantity(item.id)} />
+              <Counter
+                itemCount={item.quantity}
+                stock={item.stock}
+                decrease={() => decrementItemQuantity(item.id)}
+                increase={() => incrementItemQuantity(item.id)}
+              />
             </div>
           );
         })}

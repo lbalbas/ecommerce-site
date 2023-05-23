@@ -11,7 +11,6 @@ type Product = {
   collection?: string;
   deparment?: string;
 };
-
 export type Props = {
   children?: ReactNode;
 };

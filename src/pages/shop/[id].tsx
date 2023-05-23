@@ -26,13 +26,13 @@ const ProductPage = () => {
   }
   const increaseItemCount = () => {
     setCounter(itemCount + 1);
-  }
+  };
   const decreaseItemCount = () => {
-    setCounter(itemCount - 1)
-  }
+    setCounter(itemCount - 1);
+  };
   const item = itemData.data;
   item.quantity = itemCount;
-  
+
   return (
     <div className="flex flex-col">
       <div className="flex items-center flex-col h-[75vh] lg:max-h-[600px] lg:grid lg:grid-cols-2 mb-6 justify-center">

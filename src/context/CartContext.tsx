@@ -88,7 +88,9 @@ export function CartProvider({ children }: Props) {
   };
 
   const deleteItemFromCart = (id: string) => {
-    const updatedItemsOnCart = itemsOnCart.filter((product) => product.id !== id);
+    const updatedItemsOnCart = itemsOnCart.filter(
+      (product) => product.id !== id
+    );
     setItemsOnCart(updatedItemsOnCart);
   };
 
@@ -105,7 +107,14 @@ export function CartProvider({ children }: Props) {
       decrementItemQuantity,
       deleteItemFromCart, // Add this line
     }),
-    [itemsOnCart, addItemToCart, checkOut, incrementItemQuantity, decrementItemQuantity, deleteItemFromCart]
+    [
+      itemsOnCart,
+      addItemToCart,
+      checkOut,
+      incrementItemQuantity,
+      decrementItemQuantity,
+      deleteItemFromCart,
+    ]
   );
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;

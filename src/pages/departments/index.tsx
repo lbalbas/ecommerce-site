@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react'
+import { useEffect, useState } from "react";
 import { trpc } from "../../utils/trpc";
 import Image from "next/image";
 import Link from "next/link";
@@ -8,19 +8,19 @@ const Departments = () => {
   const [depts, setDepts] = useState([]);
   const deptsData = trpc.departments.useQuery();
 
-  useEffect(()=>{
-    if( deptsData.data )
-      setDepts(deptsData.data)
-  },[deptsData.data])
+  useEffect(() => {
+    if (deptsData.data) setDepts(deptsData.data);
+  }, [deptsData.data]);
 
-  if(deptsData.isLoading)
+  if (deptsData.isLoading)
     return (
       <div>
         <Head>
           <title>Departments</title>
         </Head>
         Loading...
-      </div>)
+      </div>
+    );
 
   return (
     <div className="flex flex-col">
@@ -31,134 +31,26 @@ const Departments = () => {
         Departments
       </h3>
       <div className="grid w-full grid-cols-3 gap-6">
-        <Link
-          className="relative w-full h-full flex rounded-2xl justify-center items-center"
-          href="/departments/electronics"
-        >
-          <Image
-            alt="Departments"
-            className="rounded-2xl"
-            width={290}
-            height={100}
-            src="/placeimg_720_720_any.jpeg"
-          />
-          <div className="absolute rounded-2xl bg-raisin opacity-50 w-full h-full flex items-center justify-center"></div>
-          <span className="absolute text-ivory uppercase¿ font-bold">
-            Electronics
-          </span>
-        </Link>
-        <Link
-          className="relative w-full h-full flex rounded-2xl justify-center items-center"
-          href="/departments/clothing"
-        >
-          <Image
-            alt="Departments"
-            className="rounded-2xl"
-            width={290}
-            height={100}
-            src="/placeimg_720_720_any.jpeg"
-          />
-          <div className="absolute rounded-2xl bg-raisin opacity-50 w-full h-full flex items-center justify-center"></div>
-          <span className="absolute text-ivory uppercase¿ font-bold">
-            Clothing
-          </span>
-        </Link>
-        <Link
-          className="relative w-full h-full flex rounded-2xl justify-center items-center"
-          href="/departments/accesories"
-        >
-          <Image
-            alt="Departments"
-            className="rounded-2xl"
-            width={290}
-            height={100}
-            src="/placeimg_720_720_any.jpeg"
-          />
-          <div className="absolute rounded-2xl bg-raisin opacity-50 w-full h-full flex items-center justify-center"></div>
-          <span className="absolute text-ivory uppercase¿ font-bold">
-            Accesories
-          </span>
-        </Link>
-        <Link
-          className="relative w-full h-full flex rounded-2xl justify-center items-center"
-          href="/departments/home&kitchen"
-        >
-          <Image
-            alt="Departments"
-            className="rounded-2xl"
-            width={290}
-            height={100}
-            src="/placeimg_720_720_any.jpeg"
-          />
-          <div className="absolute rounded-2xl bg-raisin opacity-50 w-full h-full flex items-center justify-center"></div>
-          <span className="absolute text-ivory uppercase¿ font-bold">
-            Home & Kitchen
-          </span>
-        </Link>
-        <Link
-          className="relative w-full h-full flex rounded-2xl justify-center items-center"
-          href="/departments/health&beauty"
-        >
-          <Image
-            alt="Departments"
-            className="rounded-2xl"
-            width={290}
-            height={100}
-            src="/placeimg_720_720_any.jpeg"
-          />
-          <div className="absolute rounded-2xl bg-raisin opacity-50 w-full h-full flex items-center justify-center"></div>
-          <span className="absolute text-ivory uppercase¿ font-bold">
-            Health & Beauty
-          </span>
-        </Link>
-        <Link
-          className="relative w-full h-full flex rounded-2xl justify-center items-center"
-          href="/departments/toys&games"
-        >
-          <Image
-            alt="Departments"
-            className="rounded-2xl"
-            width={290}
-            height={100}
-            src="/placeimg_720_720_any.jpeg"
-          />
-          <div className="absolute rounded-2xl bg-raisin opacity-50 w-full h-full flex items-center justify-center"></div>
-          <span className="absolute text-ivory uppercase¿ font-bold">
-            Toys & Games
-          </span>
-        </Link>
-        <Link
-          className="relative w-full h-full flex rounded-2xl justify-center items-center"
-          href="/departments/sports&outdoors"
-        >
-          <Image
-            alt="Departments"
-            className="rounded-2xl"
-            width={290}
-            height={100}
-            src="/placeimg_720_720_any.jpeg"
-          />
-          <div className="absolute rounded-2xl bg-raisin opacity-50 w-full h-full flex items-center justify-center"></div>
-          <span className="absolute text-ivory uppercase¿ font-bold">
-            Sports & Outdoors
-          </span>
-        </Link>
-        <Link
-          className="relative w-full h-full flex rounded-2xl justify-center items-center"
-          href="/departments/books&media"
-        >
-          <Image
-            alt="Departments"
-            className="rounded-2xl"
-            width={290}
-            height={100}
-            src="/placeimg_720_720_any.jpeg"
-          />
-          <div className="absolute rounded-2xl bg-raisin opacity-50 w-full h-full flex items-center justify-center"></div>
-          <span className="absolute text-ivory uppercase¿ font-bold">
-            Books & Media
-          </span>
-        </Link>
+        {depts.map((dept) => {
+          return (
+            <Link
+              className="relative w-full h-full flex rounded-2xl justify-center items-center"
+              href={"/departments/" + dept.name}
+            >
+              <Image
+                alt="Departments"
+                className="rounded-2xl"
+                width={290}
+                height={100}
+                src={dept.image}
+              />
+              <div className="absolute rounded-2xl bg-raisin opacity-50 w-full h-full flex items-center justify-center"></div>
+              <span className="absolute text-ivory uppercase font-bold">
+                {dept.name}
+              </span>
+            </Link>
+          );
+        })}
       </div>
     </div>
   );
