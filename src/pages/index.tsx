@@ -13,7 +13,7 @@ export default function Home() {
       <Head>
         <title>Ecommerce</title>
       </Head>
-      <div className="h-80 grid gap-4 md:gap-6 grid-cols-1 md:grid-cols-3">
+      <div className="h-80 lg:h-[50vh]  max-h-[450px] grid gap-4 md:gap-6 grid-cols-1 md:grid-cols-3">
         <div className="w-full grid row-span-2 gap-4 md:gap-6 grid-cols-2 md:grid-rows-2 md:grid-cols-1">
           <Link
             className="relative w-full flex rounded-2xl justify-center items-center"

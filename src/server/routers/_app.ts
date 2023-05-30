@@ -23,7 +23,7 @@ export const appRouter = router({
     return items;
   }),
   featured: procedure.query(async (id) => {
-    const featured = await prisma.items.findMany({ take: 4 });
+    const featured = await prisma.items.findMany({ take: 5 });
     await prisma.$disconnect();
     return featured;
   }),
