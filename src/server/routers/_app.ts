@@ -22,6 +22,19 @@ export const appRouter = router({
     await prisma.$disconnect();
     return items;
   }),
+  search: procedure
+    .input(z.object({ search: z.string() }))
+    .query(async (opts) => {
+      const search = await prisma.items.findMany({
+        where: {
+          item: {
+            search: opts.input.search,
+          },
+        },
+      });
+      await prisma.$disconnect();
+      return search;
+    }),
   featured: procedure.query(async (id) => {
     const featured = await prisma.items.findMany({ take: 10 });
     await prisma.$disconnect();
