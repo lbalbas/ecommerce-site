@@ -1,6 +1,7 @@
 import Button from "./Button";
 import Link from "next/link";
 import Cart from "./Cart";
+import SearchBar from "./SearchBar";
 
 const Header = () => {
   return (
@@ -8,10 +9,7 @@ const Header = () => {
       <Link className="text-ivory" href="/">
         Logo
       </Link>
-      <input
-        type="text"
-        className="min-w-64 w-full md:max-w-[30vw] self-center rounded-2xl p-1"
-      />
+      <SearchBar />
       <div className="flex">
         <Cart />
       </div>
