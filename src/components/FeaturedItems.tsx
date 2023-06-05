@@ -2,6 +2,7 @@ import Product from "@/utils/globalTypes";
 import ProductItem from "./ProductItem";
 import { useState, useEffect } from "react";
 import { trpc } from "../utils/trpc";
+import { ChevronRightIcon, ChevronLeftIcon } from "@heroicons/react/24/solid";
 
 const FeaturedItems = () => {
   const [items, setItems] = useState([]);
@@ -19,26 +20,33 @@ const FeaturedItems = () => {
   }
 
   const scroll = (scrollOffset) => {
-    const container = document.querySelector('#featured');
+    const container = document.querySelector("#featured");
     container.scrollLeft += scrollOffset;
   };
 
   return (
-    <div className="w-full gap-2 flex flex-col">
+    <div className="w-full group gap-2 relative justify-center flex flex-col">
       <h3 className="font-bold tracking-wider uppercase">Featured Items</h3>
-      <div id="featured" className="scroll-smooth w-full gap-10 flex overflow-hidden justify-start items-center">
+      <div
+        id="featured"
+        className="relative scroll-smooth w-full gap-10 flex overflow-hidden justify-start items-center"
+      >
         {items.map((item) => {
           return <ProductItem list={false} key={item.id} data={item} />;
         })}
       </div>
-    <div className="flex justify-center mt-4">
-      <button className="mr-2" onClick={() => scroll(-500)}>
-        &lt;
+      <button
+        className="z-99 opacity-0 transition-opacity group-hover:opacity-100 rounded-full p-0.5 absolute bg-white left-0"
+        onClick={() => scroll(-500)}
+      >
+        <ChevronLeftIcon className="h-8 w-8" />
       </button>
-      <button className="ml-2" onClick={() => scroll(500)}>
-        &gt;
+      <button
+        className="z-99 opacity-0 transition-opacity group-hover:opacity-100 rounded-full p-0.5 absolute bg-white right-0"
+        onClick={() => scroll(500)}
+      >
+        <ChevronRightIcon className="h-8 w-8" />
       </button>
-    </div>
     </div>
   );
 };
