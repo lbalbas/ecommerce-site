@@ -14,8 +14,8 @@ export default async function handler(
         payment_method_types: ["card"],
         line_items: req.body.transfItems,
         mode: "payment",
-        success_url: "http://localhost:3000/success",
-        cancel_url: "http://localhost:3000/cancel",
+        success_url: "http://localhost:3000/?checkoutSuccess=true",
+        cancel_url: "http://localhost:3000/?checkoutSuccess=false",
       });
 
       res.status(200).json({ id: session.id });
