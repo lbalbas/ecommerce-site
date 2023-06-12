@@ -74,8 +74,11 @@ const CartPage = () => {
           );
         })}
       </div>
-      <div className="flex items-end justify-between">
-        <strong>Total</strong> {cartTotal.toFixed(2)}
+      <div className="flex flex-col items-center gap-4">
+        <div className="text-center">
+          <h3 className="my-0"><strong>Subtotal</strong></h3> 
+          <p>${cartTotal.toFixed(2)}</p>
+        </div>
         <Button onClick={checkout}>Checkout</Button>
       </div>
     </div>
