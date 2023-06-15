@@ -51,7 +51,7 @@ export default function Home() {
       <Head>
         <title>Ecommerce</title>
       </Head>
-      <div className="h-80 lg:h-[50vh]  max-h-[450px] grid gap-4 md:gap-6 grid-cols-1 md:grid-cols-3">
+      <div className="grid max-h-[400px] gap-4 md:gap-6 grid-cols-1 md:grid-cols-3">
         <div className="w-full grid row-span-2 gap-4 md:gap-6 grid-cols-2 md:grid-rows-2 md:grid-cols-1">
           <Link
             className="relative w-full flex rounded-2xl justify-center items-center"
@@ -60,8 +60,9 @@ export default function Home() {
             <Image
               alt="Departments"
               className="rounded-2xl"
-              fill
-              src="/placeimg_720_720_any.jpeg"
+              height={185}
+              width={370}
+              src="/000000 (1).png"
             />
             <div className="absolute rounded-2xl bg-vanilla opacity-50 w-full h-full flex items-center justify-center"></div>
             <span className="absolute tracking-widest uppercase font-bold text-raisin">
@@ -75,8 +76,9 @@ export default function Home() {
             <Image
               alt="Products"
               className="rounded-2xl"
-              fill
-              src="/placeimg_720_720_any.jpeg"
+              height={185}
+              width={370}
+              src="/000000 (1).png"
             />
             <div className="absolute rounded-2xl bg-vanilla opacity-50 w-full h-full flex items-center justify-center"></div>
             <span className="absolute tracking-widest uppercase font-bold text-raisin">

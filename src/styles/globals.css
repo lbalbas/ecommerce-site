@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+
+
+@media (hover: hover) {
+  .touchscreen-visible {
+    opacity: 0;
+  }
+}
+
+/* Show the button on non-touchscreen devices when the parent is hovered */
+@media (hover: hover) {
+  .hover-parent:hover .touchscreen-visible {
+    opacity: 100;
+  }
+}

@@ -25,7 +25,7 @@ const FeaturedItems = () => {
   };
 
   return (
-    <div className="w-full group gap-2 relative justify-center flex flex-col">
+    <div className="hover-parent w-full group gap-2 relative justify-center flex flex-col">
       <h3 className="font-bold tracking-wider uppercase">Featured Items</h3>
       <div
         id="featured"
@@ -36,13 +36,13 @@ const FeaturedItems = () => {
         })}
       </div>
       <button
-        className="z-99 opacity-0 transition-opacity group-hover:opacity-100 rounded-full p-0.5 absolute bg-white left-0"
+        className="z-99 opacity-0 transition-opacity touchscreen-visible rounded-full p-0.5 absolute bg-white left-0"
         onClick={() => scroll(-500)}
       >
         <ChevronLeftIcon className="h-8 w-8" />
       </button>
       <button
-        className="z-99 opacity-0 transition-opacity group-hover:opacity-100 rounded-full p-0.5 absolute bg-white right-0"
+        className="z-99 opacity-0 transition-opacity touchscreen-visible rounded-full p-0.5 absolute bg-white right-0"
         onClick={() => scroll(500)}
       >
         <ChevronRightIcon className="h-8 w-8" />
