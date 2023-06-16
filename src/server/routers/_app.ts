@@ -1,7 +1,7 @@
 import { procedure, router } from "../trpc";
 import { PrismaClient } from "@prisma/client";
 import { z } from "zod";
-import prisma from '../prisma'
+import prisma from "../prisma";
 
 export const appRouter = router({
   item: procedure
@@ -45,11 +45,39 @@ export const appRouter = router({
     await prisma.$disconnect();
     return collections;
   }),
+  collectionItems: procedure
+    .input(z.object({ id: z.string() }))
+    .query(async (opts) => {
+      const search = await prisma.items.findMany({
+        where: {
+          collection: opts.input.id,
+        },
+        include: {
+          collections: true,
+        },
+      });
+      await prisma.$disconnect();
+      return search;
+    }),
   departments: procedure.query(async () => {
     const departments = await prisma.departments.findMany();
     await prisma.$disconnect();
     return departments;
   }),
+  departmentItems: procedure
+    .input(z.object({ id: z.string() }))
+    .query(async (opts) => {
+      const search = await prisma.items.findMany({
+        where: {
+          department: opts.input.id,
+        },
+        include: {
+          departments: true,
+        },
+      });
+      await prisma.$disconnect();
+      return search;
+    }),
 });
 
 // Export only the type of a router!

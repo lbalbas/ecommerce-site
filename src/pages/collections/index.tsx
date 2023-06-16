@@ -33,7 +33,7 @@ const Collections = () => {
         return (
           <Link
             className="relative w-full h-full flex rounded-2xl justify-center items-center"
-            href={"/collections/" + coll.name}
+            href={"/collections/" + coll.id}
           >
             <Image
               alt="Departments"
