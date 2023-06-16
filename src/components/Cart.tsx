@@ -7,8 +7,8 @@ const Cart = () => {
   const { itemsOnCart } = useCart();
 
   return (
-    <Link href="/cart" className="flex items-center w-24 justify-around">
-      <div className="min-w-fit min-h-fit rounded-full bg-white p-1 cursor-pointer shadow-md relative">
+    <Link href="/cart" className="flex items-center justify-around">
+      <div className="rounded-full bg-white p-1 cursor-pointer shadow-md relative">
         <ShoppingCartIcon className="h-8 w-8" />
         {itemsOnCart.length > 0 ? (
           <div className="absolute text-ivory font-bold bg-jasper px-1 -right-1 -bottom-1 text-xs rounded-full">

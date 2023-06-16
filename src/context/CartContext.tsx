@@ -57,7 +57,7 @@ export function CartProvider({ children }: Props) {
 
   const addItemToCart = (item: Product) => {
     setItemsOnCart((prevItemsOnCart) => [...prevItemsOnCart, item]);
-    toast("Item(s) Added", {
+    toast.success("Item(s) Added", {
       position: "top-right",
       autoClose: 5000,
       hideProgressBar: false,

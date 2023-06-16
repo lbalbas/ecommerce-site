@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { useState, useEffect, useRef } from "react";
-import {MagnifyingGlassIcon} from "@heroicons/react/24/solid";
+import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
 
 const SearchBar = () => {
   const [search, setSearch] = useState("");
@@ -9,7 +9,7 @@ const SearchBar = () => {
   let typingTimer;
 
   useEffect(() => {
-    if (userHasTyped.current) {
+    if (userHasTyped.current && search !== "") {
       router.push(`/search?s=${search}`);
     }
   }, [search]);
@@ -23,7 +23,7 @@ const SearchBar = () => {
   };
 
   return (
-    <div className="relative flex items-center self-center min-w-64 w-full md:max-w-[30vw]">
+    <div className="relative flex items-center self-center min-w-64 w-full max-w-[150px] md:max-w-[400px]">
       <MagnifyingGlassIcon className="absolute left-2 h-6 w-6" />
       <input
         type="text"

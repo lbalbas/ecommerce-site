@@ -21,7 +21,7 @@ const ProductItem = (props: ProductProps) => {
 
   return (
     <div className="w-9/12 gap-4 grid grid-cols-3">
-      <div className="h-full w-full">
+      <div className="h-full flex items-center w-full">
         <Link href={"/shop/" + id} className="flex flex-col items-center">
           <Image
             className="rounded-2xl"
@@ -32,8 +32,8 @@ const ProductItem = (props: ProductProps) => {
           />
         </Link>
       </div>
-      <div className="h-full w-full cols-span-2">
-        <h2 className="text-xl font-bold">{item}</h2>
+      <div className="h-full w-full col-span-2">
+        <h2 className="md:text-lg font-bold">{item}</h2>
         <h3 className="">${price}</h3>
       </div>
     </div>

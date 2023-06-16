@@ -6,7 +6,7 @@ export default function Layout({ children }: Props) {
   return (
     <>
       <Header />
-      <main className="w-10/12 md:w-11/12 max-w-[1150px] mx-auto py-6 flex flex-col">
+      <main className="w-11/12 max-w-[1150px] mx-auto py-6 flex flex-col">
         {children}
       </main>
       <Footer />

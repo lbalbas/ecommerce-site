@@ -9,7 +9,7 @@ const Counter = (props: {
   const { stock, itemCount, increase, decrease } = props;
   return (
     <div className="flex flex-col items-center">
-      <h3 className="font-bold">Quantity</h3>
+      <h3 className="font-bold">Qty.</h3>
       <div className="flex gap-2 text-lg">
         <button onClick={decrease} disabled={itemCount - 1 <= 0}>
           -
