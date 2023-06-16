@@ -51,11 +51,11 @@ const CartPage = () => {
   };
 
   return (
-    <div className="w-full grid grid-cols-4">
+    <div className="w-full grid gap-8 md:gap-0 md:grid-cols-4">
       <Head>
         <title>Your Shopping Cart</title>
       </Head>
-      <div className="max-h-[85vh] flex col-span-3 gap-6 flex-col overflow-y-scroll">
+      <div className="max-h-[60vh] md:max-h-[75vh] flex md:col-span-3 gap-6 flex-col overflow-y-scroll">
         {itemsOnCart.map((item) => {
           return (
             <div className="flex gap-4 items-center">
@@ -76,7 +76,9 @@ const CartPage = () => {
       </div>
       <div className="flex flex-col items-center gap-4">
         <div className="text-center">
-          <h3 className="my-0"><strong>Subtotal</strong></h3> 
+          <h3 className="my-0 tracking-wider md:text-lg">
+            <strong>SUBTOTAL</strong>
+          </h3>
           <p>${cartTotal.toFixed(2)}</p>
         </div>
         <Button onClick={checkout}>Checkout</Button>
