@@ -1,11 +1,11 @@
 import { Inter } from "next/font/google";
 import FeaturedItems from "@/components/FeaturedItems";
-import { useEffect} from 'react';
+import { useEffect } from "react";
 import Link from "next/link";
 import Carousel from "@/components/Carousel";
 import Head from "next/head";
 import Image from "next/image";
-import { useRouter } from 'next/router'
+import { useRouter } from "next/router";
 import { toast } from "react-toastify";
 import { useCart } from "../context/CartContext";
 
@@ -14,9 +14,9 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   const router = useRouter();
   const { checkOut } = useCart();
-  useEffect(()=>{
-    switch (router.query.checkoutSuccess){
-      case 'true': {
+  useEffect(() => {
+    switch (router.query.checkoutSuccess) {
+      case "true": {
         checkOut();
         toast.success("Checkout Successful", {
           position: "top-center",
@@ -30,8 +30,8 @@ export default function Home() {
         });
         break;
       }
-      case 'false': {
-        toast.error("Checkout Failed",{
+      case "false": {
+        toast.error("Checkout Failed", {
           position: "top-center",
           autoClose: 5000,
           hideProgressBar: false,
@@ -40,11 +40,11 @@ export default function Home() {
           draggable: true,
           progress: undefined,
           theme: "light",
-        })
+        });
         break;
       }
     }
-  },[router.query.checkoutSuccess])
+  }, [router.query.checkoutSuccess]);
 
   return (
     <div className="flex gap-8 flex-col">

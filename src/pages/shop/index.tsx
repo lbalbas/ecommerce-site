@@ -2,6 +2,7 @@ import ProductItem from "../../components/ProductItem";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { trpc } from "../../utils/trpc";
+import Head from "next/head";
 
 const Shop = () => {
   const [currentPage, setCurrentPage] = useState(0);
@@ -37,8 +38,11 @@ const Shop = () => {
 
   return (
     <div className="flex flex-col">
+      <Head>
+        <title>All Items</title>
+      </Head>
       <h3 className="font-bold tracking-wider uppercase my-4">All Items</h3>
-      <div className="grid grid-cols-4">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {pages[currentPage].map((item) => {
           return <ProductItem key={item.id} data={item} />;
         })}

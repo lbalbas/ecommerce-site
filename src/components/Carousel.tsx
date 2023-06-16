@@ -22,28 +22,19 @@ const Carousel = () => {
     >
       <div className="flex">
         <div className="relative h-full min-w-0 grow-0 shrink-0 basis-full">
-          <Image alt="Slider Text" src="/000000.png"   
-          width={760}
-          height={400}
-        />
+          <Image alt="Slider Text" src="/000000.png" width={760} height={400} />
           <div className="p-4 bottom-0 absolute text-xl bg-raisin bg-opacity-75 z-99 w-full h-16">
             <span className="text-ivory font-bold tracking-wider">Hello1</span>
           </div>
         </div>
         <div className="relative h-full min-w-0 grow-0 shrink-0 basis-full">
-          <Image alt="Slider Text" src="/000000.png"   
-          width={760}
-          height={400}
-        />
+          <Image alt="Slider Text" src="/000000.png" width={760} height={400} />
           <div className="p-4 bottom-0 absolute text-xl bg-raisin bg-opacity-75 z-99 w-full h-16">
             <span className="text-ivory font-bold tracking-wider">Hello1</span>
           </div>
         </div>
         <div className="relative h-full min-w-0 grow-0 shrink-0 basis-full">
-          <Image alt="Slider Text" src="/000000.png"   
-          width={760}
-          height={400}
-        />
+          <Image alt="Slider Text" src="/000000.png" width={760} height={400} />
           <div className="p-4 bottom-0 absolute text-xl bg-raisin bg-opacity-75 z-99 w-full h-16">
             <span className="text-ivory font-bold tracking-wider">Hello1</span>
           </div>

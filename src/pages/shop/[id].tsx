@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import { useCart } from "@/context/CartContext";
 import Image from "next/image";
+import Head from "next/head";
 import Button from "../../components/Button";
 import Counter from "../../components/ItemCounter";
 import { ShoppingCartIcon } from "@heroicons/react/24/solid";
@@ -35,6 +36,9 @@ const ProductPage = () => {
 
   return (
     <div className="flex flex-col">
+      <Head>
+        <title>{item.item}</title>
+      </Head>
       <div className="flex items-center flex-col h-[75vh] lg:max-h-[600px] lg:grid lg:grid-cols-2 mb-6 justify-center">
         <div className="h-80 w-80 lg:h-full lg:w-full grid place-items-center relative">
           <Image

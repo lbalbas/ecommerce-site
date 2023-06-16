@@ -2,9 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
-
 @media (hover: hover) {
   .touchscreen-visible {
     opacity: 0;
