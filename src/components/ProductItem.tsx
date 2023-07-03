@@ -12,7 +12,8 @@ const ProductItem = (props: ProductProps) => {
         className="group/item h-64 flex flex-col items-center"
       >
         <div className="relative h-36 w-36 md:h-[175px] md:w-[175px]">
-          <Image className="rounded-2xl" alt={item} src={thumbnail} fill />
+          <Image className="rounded-2xl" alt={item} src={thumbnail} width={175}
+            height={175} />
         </div>
         <p className="text-center font-bold lg:font-medium">{item}</p>
         <p className="text-center group-hover/item:block lg:hidden">${price}</p>

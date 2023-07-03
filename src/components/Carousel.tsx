@@ -1,6 +1,7 @@
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import Image from "next/image";
+import Link from "next/link";
 
 const Carousel = () => {
   const [emblaRef] = useEmblaCarousel(
@@ -22,40 +23,25 @@ const Carousel = () => {
     >
       <div className="flex">
         <div className="relative h-full min-w-0 grow-0 shrink-0 basis-full">
-          <Image alt="Slider Text" src="/000000.png" width={760} height={400} />
+          <Image priority={true} alt="Slider Text" src="/000000.png" width={760} height={400} />
           <div className="p-4 bottom-0 absolute text-xl bg-raisin bg-opacity-75 z-99 w-full h-16">
-            <span className="text-ivory font-bold tracking-wider">Hello1</span>
+            <span className="text-ivory font-bold tracking-wider">Lorem Ipsum</span>
           </div>
         </div>
         <div className="relative h-full min-w-0 grow-0 shrink-0 basis-full">
-          <Image alt="Slider Text" src="/000000.png" width={760} height={400} />
+          <Image priority={true} alt="Slider Text" src="/000000.png" width={760} height={400} />
           <div className="p-4 bottom-0 absolute text-xl bg-raisin bg-opacity-75 z-99 w-full h-16">
-            <span className="text-ivory font-bold tracking-wider">Hello1</span>
+            <span className="text-ivory font-bold tracking-wider">Hello</span>
           </div>
         </div>
-        <div className="relative h-full min-w-0 grow-0 shrink-0 basis-full">
-          <Image alt="Slider Text" src="/000000.png" width={760} height={400} />
+        <Link href="/shop" className="relative h-full min-w-0 grow-0 shrink-0 basis-full">
+          <Image priority={true} alt="Slider Text" src="/000000.png" width={760} height={400} />
           <div className="p-4 bottom-0 absolute text-xl bg-raisin bg-opacity-75 z-99 w-full h-16">
-            <span className="text-ivory font-bold tracking-wider">Hello1</span>
+            <span className="text-ivory font-bold tracking-wider">Check out our new products.</span>
           </div>
-        </div>
+        </Link>
       </div>
     </div>
   );
 };
-/*
-
-        <div className="relative h-full md:h-80 lg:h-[50vh]  max-h-[450px] min-w-0 grow-0 shrink-0 basis-full">
-          <Image alt="Slider Text" src="/placeimg_720_720_any.jpeg" fill />
-          <div className="p-4 bottom-0 absolute text-xl bg-raisin bg-opacity-75 z-99 w-full h-16">
-            <span className="text-ivory font-bold tracking-wider">Hello2</span>
-          </div>
-        </div>
-        <div className="relative h-full md:h-80 lg:h-[50vh]  max-h-[450px] min-w-0 grow-0 shrink-0 basis-full">
-          <Image alt="Slider Text" src="/placeimg_720_720_any.jpeg" fill />
-          <div className="p-4 bottom-0 absolute text-xl bg-raisin bg-opacity-75 z-99 w-full h-16">
-            <span className="text-ivory font-bold tracking-wider">Hello3</span>
-          </div>
-        </div>
-*/
 export default Carousel;

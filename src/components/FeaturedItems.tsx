@@ -16,7 +16,7 @@ const FeaturedItems = () => {
   }, [allItems.data]);
 
   if (allItems.isLoading) {
-    return <div>Loading...</div>;
+    return <div className="h-48">Loading...</div>;
   }
 
   const scroll = (scrollOffset) => {
