@@ -58,12 +58,12 @@ const CartPage = () => {
       <div className="max-h-[60vh] md:max-h-[75vh] flex md:col-span-3 gap-6 flex-col overflow-y-scroll">
         {itemsOnCart.map((item) => {
           return (
-            <div className="flex gap-4 items-center">
+            <div key={item.id} className="flex gap-4 items-center">
               <XMarkIcon
                 onClick={() => deleteItemFromCart(item.id)}
                 className="h-8 w-8 cursor-pointer"
               />
-              <ProductItem list={true} key={item.id} data={item} />
+              <ProductItem list={true} data={item} />
               <Counter
                 itemCount={item.quantity}
                 stock={item.stock}
@@ -76,10 +76,10 @@ const CartPage = () => {
       </div>
       <div className="flex flex-col items-center gap-4">
         <div className="text-center">
-          <h3 className="my-0 tracking-wider md:text-lg">
+          <h3 className="my-0 tracking-wider md:text-xl">
             <strong>SUBTOTAL</strong>
           </h3>
-          <p>${cartTotal.toFixed(2)}</p>
+          <p className="md:text-lg">${cartTotal.toFixed(2)}</p>
         </div>
         <Button onClick={checkout}>Checkout</Button>
       </div>

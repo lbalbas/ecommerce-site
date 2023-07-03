@@ -11,7 +11,7 @@ import { trpc } from "../../utils/trpc";
 
 const ProductPage = () => {
   const [itemCount, setCounter] = useState(1);
-  const { addItemToCart } = useCart();
+  const { addItemToCart, itemsOnCart } = useCart();
   const router = useRouter();
   const { id } = router.query;
   const [loading, setLoading] = useState(true);
@@ -33,7 +33,9 @@ const ProductPage = () => {
   };
   const item = itemData.data;
   item.quantity = itemCount;
-
+  const itemInCart = itemsOnCart.find(cartItem => cartItem.id === item.id);
+  const itemInCartQuantity = itemInCart ? itemInCart.quantity : 0;
+  
   return (
     <div className="flex flex-col">
       <Head>
@@ -64,9 +66,14 @@ const ProductPage = () => {
                 decrease={decreaseItemCount}
                 itemCount={itemCount}
                 stock={item.stock}
+                itemInCartQuantity={itemInCartQuantity}
               />
 
-              <Button onClick={() => addItemToCart(item)}>
+              <Button disabled={item.stock === 0}
+              onClick={() => {
+    addItemToCart({...item, quantity: itemCount});
+    setCounter(1);
+  }}>
                 <div className="w-full flex gap-2 items-center ">
                   <div className="flex w-full">
                     <ShoppingCartIcon className="h-6 w-6" />

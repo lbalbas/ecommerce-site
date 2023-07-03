@@ -5,17 +5,18 @@ const Counter = (props: {
   itemCount: number;
   increase: () => void;
   decrease: () => void;
+  itemInCartQuantity: number;
 }) => {
-  const { stock, itemCount, increase, decrease } = props;
+  const { stock, itemCount, increase, decrease, itemInCartQuantity } = props;
   return (
     <div className="flex flex-col items-center">
-      <h3 className="font-bold">Qty.</h3>
+      <h3>Qty.</h3>
       <div className="flex gap-2 text-lg">
         <button onClick={decrease} disabled={itemCount - 1 <= 0}>
           -
         </button>
         {itemCount}
-        <button onClick={increase} disabled={itemCount + 1 > stock}>
+        <button onClick={increase} disabled={itemCount + itemInCartQuantity >= stock}>
           +
         </button>
       </div>

@@ -55,17 +55,48 @@ export function CartProvider({ children }: Props) {
     }
   }, [itemsOnCart, hasMounted]);
 
-  const addItemToCart = (item: Product) => {
-    setItemsOnCart((prevItemsOnCart) => [...prevItemsOnCart, item]);
-    toast.success("Item(s) Added", {
-      position: "top-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
+  const addItemToCart = (product: Product) => {
+    setItemsOnCart((prevItemsOnCart) => {
+      const existingProductIndex = prevItemsOnCart.findIndex((item) => item.id === product.id);
+
+      if (existingProductIndex >= 0) {
+        // Product exists in cart already, update the quantity
+        const updatedItems = [...prevItemsOnCart];
+        const newQuantity = updatedItems[existingProductIndex].quantity + product.quantity;
+
+        // Check if the new quantity surpasses the stock
+        if (newQuantity > product.stock) {
+          toast.error("You can't add more items than there are in stock.", { /* toast options */ });
+          return prevItemsOnCart; // Return the current cart without changes
+        }
+
+        updatedItems[existingProductIndex].quantity = newQuantity;
+        toast.success("Item(s) Added", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+        return updatedItems;
+      } else {
+        // Product is not in the cart, add it
+        toast.success("Item(s) Added", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+        return [...prevItemsOnCart, product];
+
+      }
     });
   };
 

@@ -8,6 +8,7 @@ type Product = {
   stock: number;
   thumbnail: string;
   id: string;
+  quantity?: number;
   collection?: string;
   deparment?: string;
 };
