@@ -57,16 +57,21 @@ export function CartProvider({ children }: Props) {
 
   const addItemToCart = (product: Product) => {
     setItemsOnCart((prevItemsOnCart) => {
-      const existingProductIndex = prevItemsOnCart.findIndex((item) => item.id === product.id);
+      const existingProductIndex = prevItemsOnCart.findIndex(
+        (item) => item.id === product.id
+      );
 
       if (existingProductIndex >= 0) {
         // Product exists in cart already, update the quantity
         const updatedItems = [...prevItemsOnCart];
-        const newQuantity = updatedItems[existingProductIndex].quantity + product.quantity;
+        const newQuantity =
+          updatedItems[existingProductIndex].quantity + product.quantity;
 
         // Check if the new quantity surpasses the stock
         if (newQuantity > product.stock) {
-          toast.error("You can't add more items than there are in stock.", { /* toast options */ });
+          toast.error("You can't add more items than there are in stock.", {
+            /* toast options */
+          });
           return prevItemsOnCart; // Return the current cart without changes
         }
 
@@ -95,7 +100,6 @@ export function CartProvider({ children }: Props) {
           theme: "light",
         });
         return [...prevItemsOnCart, product];
-
       }
     });
   };

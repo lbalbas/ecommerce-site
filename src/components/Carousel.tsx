@@ -23,21 +23,46 @@ const Carousel = () => {
     >
       <div className="flex">
         <div className="relative h-full min-w-0 grow-0 shrink-0 basis-full">
-          <Image priority={true} alt="Slider Text" src="/000000.png" width={760} height={400} />
+          <Image
+            priority={true}
+            alt="Slider Text"
+            src="/000000.png"
+            width={760}
+            height={400}
+          />
           <div className="p-4 bottom-0 absolute text-xl bg-raisin bg-opacity-75 z-99 w-full h-16">
-            <span className="text-ivory font-bold tracking-wider">Lorem Ipsum</span>
+            <span className="text-ivory font-bold tracking-wider">
+              Lorem Ipsum
+            </span>
           </div>
         </div>
         <div className="relative h-full min-w-0 grow-0 shrink-0 basis-full">
-          <Image priority={true} alt="Slider Text" src="/000000.png" width={760} height={400} />
+          <Image
+            priority={true}
+            alt="Slider Text"
+            src="/000000.png"
+            width={760}
+            height={400}
+          />
           <div className="p-4 bottom-0 absolute text-xl bg-raisin bg-opacity-75 z-99 w-full h-16">
             <span className="text-ivory font-bold tracking-wider">Hello</span>
           </div>
         </div>
-        <Link href="/shop" className="relative h-full min-w-0 grow-0 shrink-0 basis-full">
-          <Image priority={true} alt="Slider Text" src="/000000.png" width={760} height={400} />
+        <Link
+          href="/shop"
+          className="relative h-full min-w-0 grow-0 shrink-0 basis-full"
+        >
+          <Image
+            priority={true}
+            alt="Slider Text"
+            src="/000000.png"
+            width={760}
+            height={400}
+          />
           <div className="p-4 bottom-0 absolute text-xl bg-raisin bg-opacity-75 z-99 w-full h-16">
-            <span className="text-ivory font-bold tracking-wider">Check out our new products.</span>
+            <span className="text-ivory font-bold tracking-wider">
+              Check out our new products.
+            </span>
           </div>
         </Link>
       </div>

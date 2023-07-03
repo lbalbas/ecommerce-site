@@ -33,9 +33,9 @@ const ProductPage = () => {
   };
   const item = itemData.data;
   item.quantity = itemCount;
-  const itemInCart = itemsOnCart.find(cartItem => cartItem.id === item.id);
+  const itemInCart = itemsOnCart.find((cartItem) => cartItem.id === item.id);
   const itemInCartQuantity = itemInCart ? itemInCart.quantity : 0;
-  
+
   return (
     <div className="flex flex-col">
       <Head>
@@ -69,11 +69,13 @@ const ProductPage = () => {
                 itemInCartQuantity={itemInCartQuantity}
               />
 
-              <Button disabled={item.stock === 0}
-              onClick={() => {
-    addItemToCart({...item, quantity: itemCount});
-    setCounter(1);
-  }}>
+              <Button
+                disabled={item.stock === 0}
+                onClick={() => {
+                  addItemToCart({ ...item, quantity: itemCount });
+                  setCounter(1);
+                }}
+              >
                 <div className="w-full flex gap-2 items-center ">
                   <div className="flex w-full">
                     <ShoppingCartIcon className="h-6 w-6" />

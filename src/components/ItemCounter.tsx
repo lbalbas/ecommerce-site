@@ -16,7 +16,10 @@ const Counter = (props: {
           -
         </button>
         {itemCount}
-        <button onClick={increase} disabled={itemCount + itemInCartQuantity >= stock}>
+        <button
+          onClick={increase}
+          disabled={itemCount + itemInCartQuantity >= stock}
+        >
           +
         </button>
       </div>
