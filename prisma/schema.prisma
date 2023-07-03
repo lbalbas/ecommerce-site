@@ -28,11 +28,6 @@ model images {
   id    String  @id @unique @db.Uuid
 }
 
-model item_sizes {
-  size String? @db.VarChar
-  id   String  @id @unique @db.Uuid
-}
-
 /// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
 model items {
   item        String       @db.VarChar

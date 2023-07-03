@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.0.17",
-    "@prisma/client": "^4.14.0",
+    "@prisma/client": "^4.16.2",
     "@stripe/stripe-js": "^1.53.0",
     "@tanstack/react-query": "^4.29.5",
     "@trpc/client": "^10.26.0",
@@ -25,7 +25,7 @@
     "embla-carousel-autoplay": "^7.1.0",
     "embla-carousel-react": "^7.1.0",
     "eslint": "8.38.0",
-    "eslint-config-next": "13.3.0",
+    "eslint-config-next": "^12.0.4",
     "micro": "^10.0.1",
     "next": "13.3.0",
     "postcss": "8.4.21",
@@ -38,6 +38,6 @@
     "zod": "^3.21.4"
   },
   "devDependencies": {
-    "prisma": "^4.14.0"
+    "prisma": "^4.16.2"
   }
 }
