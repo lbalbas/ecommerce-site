@@ -32,6 +32,7 @@ const Collections = () => {
       {collections.map((coll, key) => {
         return (
           <Link
+            key={coll.id}
             className="relative w-full h-full flex rounded-2xl justify-center items-center"
             href={"/collections/" + coll.id}
           >

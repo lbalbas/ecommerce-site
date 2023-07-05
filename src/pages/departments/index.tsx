@@ -34,6 +34,7 @@ const Departments = () => {
         {depts.map((dept) => {
           return (
             <Link
+              key={dept.id}
               className="relative w-full h-full flex rounded-2xl justify-center items-center"
               href={"/departments/" + dept.id}
             >

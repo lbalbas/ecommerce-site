@@ -7,6 +7,7 @@ import {
   useState,
   useMemo,
   useEffect,
+  useCallback,
 } from "react";
 import { arrayBuffer } from "node:stream/consumers";
 import { toast } from "react-toastify";
@@ -53,9 +54,9 @@ export function CartProvider({ children }: Props) {
     } else {
       updateLocalStorage();
     }
-  }, [itemsOnCart, hasMounted]);
+  }, [itemsOnCart, hasMounted, updateLocalStorage]);
 
-  const addItemToCart = (product: Product) => {
+  const addItemToCart = useCallback((product: Product) => {
     setItemsOnCart((prevItemsOnCart) => {
       const existingProductIndex = prevItemsOnCart.findIndex(
         (item) => item.id === product.id
@@ -102,36 +103,36 @@ export function CartProvider({ children }: Props) {
         return [...prevItemsOnCart, product];
       }
     });
-  };
+  },[]);
 
-  const incrementItemQuantity = (id: string) => {
+  const incrementItemQuantity = useCallback((id: string) => {
     const updatedItemsOnCart = [...itemsOnCart];
     const item = updatedItemsOnCart.find((product) => product.id === id);
     if (item) {
       item.quantity += 1;
       setItemsOnCart(updatedItemsOnCart);
     }
-  };
+  },[itemsOnCart]);
 
-  const decrementItemQuantity = (id: string) => {
+  const decrementItemQuantity = useCallback((id: string) => {
     const updatedItemsOnCart = [...itemsOnCart];
     const item = updatedItemsOnCart.find((product) => product.id === id);
     if (item && item.quantity > 1) {
       item.quantity -= 1;
       setItemsOnCart(updatedItemsOnCart);
     }
-  };
+  },[itemsOnCart]);
 
-  const deleteItemFromCart = (id: string) => {
+  const deleteItemFromCart = useCallback((id: string) => {
     const updatedItemsOnCart = itemsOnCart.filter(
       (product) => product.id !== id
     );
     setItemsOnCart(updatedItemsOnCart);
-  };
+  },[itemsOnCart]);
 
-  const checkOut = () => {
+  const checkOut = useCallback(() => {
     setItemsOnCart([]);
-  };
+  },[]);
 
   const value = useMemo(
     () => ({
@@ -140,7 +141,7 @@ export function CartProvider({ children }: Props) {
       checkOut,
       incrementItemQuantity,
       decrementItemQuantity,
-      deleteItemFromCart, // Add this line
+      deleteItemFromCart,
     }),
     [
       itemsOnCart,

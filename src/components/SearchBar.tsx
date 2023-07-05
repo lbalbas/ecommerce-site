@@ -12,7 +12,7 @@ const SearchBar = () => {
     if (userHasTyped.current && search !== "") {
       router.push(`/search?s=${search}`);
     }
-  }, [search]);
+  }, [search, router]);
 
   const handleInput = (e) => {
     userHasTyped.current = true;

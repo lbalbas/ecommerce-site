@@ -44,7 +44,7 @@ export default function Home() {
         break;
       }
     }
-  }, [router.query.checkoutSuccess]);
+  }, [router.query.checkoutSuccess, checkOut]);
 
   return (
     <div className="flex gap-8 flex-col">

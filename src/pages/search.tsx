@@ -23,7 +23,7 @@ const Search = () => {
   return (
     <div className="flex flex-col">
       <h3 className="font-bold tracking-wider uppercase my-4">
-        Searching "{s}"
+        {`Searching "${s}"`}
       </h3>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {items.map((item) => {
