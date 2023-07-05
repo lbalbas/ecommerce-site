@@ -5,7 +5,7 @@ import { trpc } from "../utils/trpc";
 import { ChevronRightIcon, ChevronLeftIcon } from "@heroicons/react/24/solid";
 
 const FeaturedItems = () => {
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState<Product[]>([]);
 
   const allItems = trpc.featured.useQuery();
 
@@ -19,9 +19,11 @@ const FeaturedItems = () => {
     return <div className="h-48">Loading...</div>;
   }
 
-  const scroll = (scrollOffset) => {
+  const scroll = (scrollOffset: number) => {
     const container = document.querySelector("#featured");
-    container.scrollLeft += scrollOffset;
+    if (container !== null) {
+      container.scrollLeft += scrollOffset;
+    }
   };
 
   return (

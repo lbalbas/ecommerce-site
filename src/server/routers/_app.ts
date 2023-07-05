@@ -15,7 +15,7 @@ export const appRouter = router({
         where: { id: opts.input.id },
       });
       await prisma.$disconnect();
-      return item;
+      return item || false; // Return false if item is null
     }),
   items: procedure.query(async () => {
     const items = await prisma.items.findMany();
@@ -57,7 +57,7 @@ export const appRouter = router({
         },
       });
       await prisma.$disconnect();
-      return search;
+      return search.length > 0 ? search : false; // Return false if search results are empty
     }),
   departments: procedure.query(async () => {
     const departments = await prisma.departments.findMany();
@@ -76,7 +76,7 @@ export const appRouter = router({
         },
       });
       await prisma.$disconnect();
-      return search;
+      return search.length > 0 ? search : false; // Return false if search results are empty
     }),
 });
 

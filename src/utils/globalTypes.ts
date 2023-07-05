@@ -8,10 +8,13 @@ type Product = {
   stock: number;
   thumbnail: string;
   id: string;
-  quantity?: number;
-  collection?: string;
-  deparment?: string;
+  collection?: string | null;
+  deparment?: string | null;
 };
+
+export interface CartProduct extends Product {
+  quantity: number;
+}
 export type Props = {
   children?: ReactNode;
 };
