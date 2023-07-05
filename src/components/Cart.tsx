@@ -12,7 +12,7 @@ const Cart = () => {
         {itemsOnCart.length > 0 ? (
           <div className="absolute text-ivory font-bold bg-jasper px-1 -right-1 -bottom-1 text-xs rounded-full">
             {itemsOnCart.reduce((accumulator, item) => {
-              return accumulator + item.quantity;
+              return accumulator + (item.quantity || 0);
             }, 0)}
           </div>
         ) : (

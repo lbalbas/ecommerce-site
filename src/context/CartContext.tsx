@@ -42,11 +42,11 @@ export function CartProvider({ children }: Props) {
   const [itemsOnCart, setItemsOnCart] = useState<Product[]>([]);
   const [hasMounted, setHasMounted] = useState(false);
 
-  const updateLocalStorage = () => {
-    localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(itemsOnCart));
-  };
-
   useEffect(() => {
+    const updateLocalStorage = () => {
+      localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(itemsOnCart));
+    };
+
     if (!hasMounted) {
       setHasMounted(true);
       const storedCart = localStorage.getItem(CART_STORAGE_KEY);
@@ -103,36 +103,45 @@ export function CartProvider({ children }: Props) {
         return [...prevItemsOnCart, product];
       }
     });
-  },[]);
+  }, []);
 
-  const incrementItemQuantity = useCallback((id: string) => {
-    const updatedItemsOnCart = [...itemsOnCart];
-    const item = updatedItemsOnCart.find((product) => product.id === id);
-    if (item) {
-      item.quantity += 1;
+  const incrementItemQuantity = useCallback(
+    (id: string) => {
+      const updatedItemsOnCart = [...itemsOnCart];
+      const item = updatedItemsOnCart.find((product) => product.id === id);
+      if (item) {
+        item.quantity += 1;
+        setItemsOnCart(updatedItemsOnCart);
+      }
+    },
+    [itemsOnCart]
+  );
+
+  const decrementItemQuantity = useCallback(
+    (id: string) => {
+      const updatedItemsOnCart = [...itemsOnCart];
+      const item = updatedItemsOnCart.find((product) => product.id === id);
+      if (item && item.quantity > 1) {
+        item.quantity -= 1;
+        setItemsOnCart(updatedItemsOnCart);
+      }
+    },
+    [itemsOnCart]
+  );
+
+  const deleteItemFromCart = useCallback(
+    (id: string) => {
+      const updatedItemsOnCart = itemsOnCart.filter(
+        (product) => product.id !== id
+      );
       setItemsOnCart(updatedItemsOnCart);
-    }
-  },[itemsOnCart]);
-
-  const decrementItemQuantity = useCallback((id: string) => {
-    const updatedItemsOnCart = [...itemsOnCart];
-    const item = updatedItemsOnCart.find((product) => product.id === id);
-    if (item && item.quantity > 1) {
-      item.quantity -= 1;
-      setItemsOnCart(updatedItemsOnCart);
-    }
-  },[itemsOnCart]);
-
-  const deleteItemFromCart = useCallback((id: string) => {
-    const updatedItemsOnCart = itemsOnCart.filter(
-      (product) => product.id !== id
-    );
-    setItemsOnCart(updatedItemsOnCart);
-  },[itemsOnCart]);
+    },
+    [itemsOnCart]
+  );
 
   const checkOut = useCallback(() => {
     setItemsOnCart([]);
-  },[]);
+  }, []);
 
   const value = useMemo(
     () => ({
