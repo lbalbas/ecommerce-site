@@ -6,7 +6,7 @@ import { trpc } from "../utils/trpc";
 const Search = () => {
 	const [loading, setLoading] = useState(true);
 	const router = useRouter();
-	const { search } = router.query;
+	const search = router.query.s;
 	let stringSearch = "";
 
 	if (Array.isArray(search)) {
@@ -20,7 +20,7 @@ const Search = () => {
 	const searchItems = trpc.search.useQuery(
 		{ search: stringSearch },
 		{
-			enabled: stringSearch !== "", // Enable the query only when id is defined and is a string
+			enabled: stringSearch !== "",
 		}
 	);
 

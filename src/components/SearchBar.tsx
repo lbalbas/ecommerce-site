@@ -4,27 +4,33 @@ import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
 
 const SearchBar = () => {
 	const [search, setSearch] = useState("");
-	const userHasTyped = useRef(false);
-	const typingTimer = useRef<NodeJS.Timeout | null>(null); // Use useRef here
 	const router = useRouter();
-
-	useEffect(() => {
-		if (userHasTyped.current && search !== "") {
-			router.push(`/search?s=${search}`);
-		}
-	}, [search, router]);
+	
+	let typingTimer = useRef<NodeJS.Timeout | null>(null);
 
 	const handleInput = (e: React.KeyboardEvent<HTMLInputElement>) => {
-		userHasTyped.current = true;
-		if (typingTimer.current) clearTimeout(typingTimer.current);
 		const target = e.target as HTMLInputElement;
+		if (typingTimer.current) {
+			clearTimeout(typingTimer.current);
+		}
 		if (target && target.value) {
 			typingTimer.current = setTimeout(
 				() => setSearch(target.value),
-				1000
+				500
 			);
 		}
 	};
+
+	useEffect(() => {
+		if (search !== "") {
+			router.push(`/search?s=${search}`);
+		}
+		return () => {
+			if (typingTimer.current) {
+				clearTimeout(typingTimer.current);
+			}
+		};
+	}, [search]);
 
 	return (
 		<div className="relative flex items-center self-center min-w-64 w-full max-w-[150px] md:max-w-[400px]">
