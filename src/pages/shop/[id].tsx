@@ -9,6 +9,8 @@ import { ShoppingCartIcon } from "@heroicons/react/24/solid";
 import FeaturedItems from "../../components/FeaturedItems";
 import { trpc } from "../../utils/trpc";
 import { CartProduct } from "../../utils/globalTypes";
+import LoadingBlock from "../../components/Loading";
+
 const ProductPage = () => {
 	const [itemCount, setCounter] = useState(1);
 	const { addItemToCart, itemsOnCart } = useCart();
@@ -32,7 +34,7 @@ const ProductPage = () => {
 	);
 
 	if (itemData.isLoading) {
-		return <div>Loading...</div>;
+		return <LoadingBlock size={10} />;
 	}
 	const increaseItemCount = () => {
 		setCounter(itemCount + 1);

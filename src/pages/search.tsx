@@ -2,6 +2,7 @@ import ProductItem from "../components/ProductItem";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { trpc } from "../utils/trpc";
+import LoadingBlock from "../components/Loading";
 
 const Search = () => {
 	const [loading, setLoading] = useState(true);
@@ -27,10 +28,11 @@ const Search = () => {
 	const items = searchItems.data;
 
 	if (searchItems.isLoading) {
-		return <div>Loading...</div>;
+		return 				<LoadingBlock size={10} />;
+;
 	} else if (items) {
 		return (
-			<div className="flex flex-col">
+			<div className="flex min-h-[60vh] flex-col">
 				<h3 className="font-bold tracking-wider uppercase my-4">
 					{`Searching "${search}"`}
 				</h3>

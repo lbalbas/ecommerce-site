@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { trpc } from "../../utils/trpc";
 import Head from "next/head";
 import Product from "@/utils/globalTypes";
+import LoadingBlock from "../../components/Loading";
 
 const Shop = () => {
 	const [currentPage, setCurrentPage] = useState(0);
@@ -39,7 +40,7 @@ const Shop = () => {
 	};
 
 	if (allItems.isLoading || !pages.length) {
-		return <div>Loading...</div>;
+		return <LoadingBlock size={10} />;
 	}
 
 	return (

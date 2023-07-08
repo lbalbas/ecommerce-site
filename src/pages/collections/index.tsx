@@ -3,6 +3,8 @@ import { trpc } from "../../utils/trpc";
 import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
+import LoadingBlock from "../../components/Loading";
+
 interface Collections {
 	id: string;
 	name: string;
@@ -25,7 +27,7 @@ const Collections = () => {
 				<Head>
 					<title>Collections</title>
 				</Head>
-				Loading...
+				<LoadingBlock size={10} />
 			</div>
 		);
 

@@ -3,6 +3,7 @@ import ProductItem from "./ProductItem";
 import { useState, useEffect } from "react";
 import { trpc } from "../utils/trpc";
 import { ChevronRightIcon, ChevronLeftIcon } from "@heroicons/react/24/solid";
+import LoadingBlock from './Loading'
 
 const FeaturedItems = () => {
   const [items, setItems] = useState<Product[]>([]);
@@ -16,7 +17,7 @@ const FeaturedItems = () => {
   }, [allItems.data]);
 
   if (allItems.isLoading) {
-    return <div className="h-48">Loading...</div>;
+    return <LoadingBlock size={10}/>;
   }
 
   const scroll = (scrollOffset: number) => {

@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { trpc } from "../../utils/trpc";
 import Head from "next/head";
 import Product from "@/utils/globalTypes";
+import LoadingBlock from "../../components/Loading";
 
 interface CollectionProduct extends Product {
   collections: {
@@ -69,7 +70,7 @@ const CollectionPage = () => {
         <Head>
           <title>Collection Items</title>
         </Head>
-        Loading...
+        <LoadingBlock size={10} />
       </div>
     );
   }
