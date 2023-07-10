@@ -35,7 +35,7 @@ const Search = () => {
         <Head>
           <title>{`Search Page`}</title>
         </Head>
-        <LoadingBlock size={10} />
+        <LoadingBlock size={32} />
       </div>
     );
   } else if (items) {

@@ -27,7 +27,7 @@ const Collections = () => {
         <Head>
           <title>Collections</title>
         </Head>
-        <LoadingBlock size={10} />
+        <LoadingBlock size={32} />
       </div>
     );
 

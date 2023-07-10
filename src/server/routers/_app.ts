@@ -13,6 +13,9 @@ export const appRouter = router({
     .query(async (opts) => {
       const item = await prisma.items.findUnique({
         where: { id: opts.input.id },
+        include: {
+          departments: true,
+        },
       });
       await prisma.$disconnect();
       return item || false; // Return false if item is null

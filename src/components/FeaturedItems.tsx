@@ -17,7 +17,7 @@ const FeaturedItems = () => {
   }, [allItems.data]);
 
   if (allItems.isLoading) {
-    return <LoadingBlock size={10} />;
+    return <LoadingBlock size={32} />;
   }
 
   const scroll = (scrollOffset: number) => {

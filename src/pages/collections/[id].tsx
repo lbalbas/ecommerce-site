@@ -70,7 +70,7 @@ const CollectionPage = () => {
         <Head>
           <title>Collection Items</title>
         </Head>
-        <LoadingBlock size={10} />
+        <LoadingBlock size={32} />
       </div>
     );
   }

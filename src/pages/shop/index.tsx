@@ -40,7 +40,7 @@ const Shop = () => {
   };
 
   if (allItems.isLoading || !pages.length) {
-    return <LoadingBlock size={10} />;
+    return <LoadingBlock size={32} />;
   }
 
   return (
