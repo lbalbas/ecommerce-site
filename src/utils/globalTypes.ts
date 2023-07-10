@@ -25,7 +25,7 @@ export type ProductProps = {
 	list: boolean;
 };
 
-export interface DepartmentProduct {
+export interface DepartmentProduct extends Product {
 	departments: {
 		id: string;
 		name: string;
