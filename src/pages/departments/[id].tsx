@@ -6,6 +6,7 @@ import Head from "next/head";
 import { DepartmentProduct } from "@/utils/globalTypes";
 import LoadingBlock, { LoadingSpinner } from "@/components/Loading";
 import type Product from "@/utils/globalTypes";
+import Pagination from "../../components/Pagination";
 
 const DepartmentPage = () => {
 	const [currentPage, setCurrentPage] = useState(0);
@@ -83,15 +84,11 @@ const DepartmentPage = () => {
 					);
 				})}
 			</div>
-			<button onClick={handlePrevious} disabled={currentPage === 0}>
-				Previous
-			</button>
-			<button
-				onClick={handleNext}
-				disabled={currentPage === pages.length - 1}
-			>
-				Next
-			</button>
+			<Pagination totalPages={pages.length} 
+						currentPage={currentPage} 
+						handleNext={handleNext}
+						handlePrevious={handlePrevious}
+			/>
 		</div>
 	);
 };

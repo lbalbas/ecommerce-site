@@ -5,6 +5,7 @@ import { trpc } from "../../utils/trpc";
 import Head from "next/head";
 import Product from "@/utils/globalTypes";
 import LoadingBlock from "../../components/Loading";
+import Pagination from "../../components/Pagination";
 
 interface CollectionProduct extends Product {
   collections: {
@@ -90,15 +91,11 @@ const CollectionPage = () => {
             return <ProductItem key={item.id} data={item} list={false} />;
           })}
         </div>
-        <button onClick={handlePrevious} disabled={currentPage === 0}>
-          Previous
-        </button>
-        <button
-          onClick={handleNext}
-          disabled={currentPage === pages.length - 1}
-        >
-          Next
-        </button>
+      <Pagination totalPages={pages.length} 
+            currentPage={currentPage} 
+            handleNext={handleNext}
+            handlePrevious={handlePrevious}
+      />
       </div>
     );
   }

@@ -5,6 +5,7 @@ import { trpc } from "../../utils/trpc";
 import Head from "next/head";
 import Product from "@/utils/globalTypes";
 import LoadingBlock from "../../components/Loading";
+import Pagination from "../../components/Pagination";
 
 const Shop = () => {
   const [currentPage, setCurrentPage] = useState(0);
@@ -54,12 +55,11 @@ const Shop = () => {
           return <ProductItem list={false} key={item.id} data={item} />;
         })}
       </div>
-      <button onClick={handlePrevious} disabled={currentPage === 0}>
-        Previous
-      </button>
-      <button onClick={handleNext} disabled={currentPage === pages.length - 1}>
-        Next
-      </button>
+      <Pagination totalPages={pages.length} 
+            currentPage={currentPage} 
+            handleNext={handleNext}
+            handlePrevious={handlePrevious}
+      />
     </div>
   );
 };
