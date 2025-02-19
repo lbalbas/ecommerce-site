@@ -23,11 +23,6 @@ model departments {
   items items[]
 }
 
-model images {
-  image String? @db.VarChar
-  id    String  @id @unique @db.Uuid
-}
-
 /// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
 model items {
   item        String       @db.VarChar
@@ -40,11 +35,4 @@ model items {
   department  String       @db.Uuid
   collections collections? @relation(fields: [collection], references: [id], onDelete: Cascade, onUpdate: NoAction)
   departments departments  @relation(fields: [department], references: [id], onUpdate: NoAction)
-}
-
-model posts {
-  id         String    @id(map: "Posts_pkey") @db.Uuid
-  created_at DateTime? @default(now()) @db.Timestamptz(6)
-  title      String
-  post       String
 }
