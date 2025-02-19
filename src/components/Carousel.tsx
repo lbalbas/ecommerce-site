@@ -26,7 +26,7 @@ const Carousel = () => {
           <Image
             priority={true}
             alt="Slider Text"
-            src="/000000.png"
+            src="/01.jpg"
             width={760}
             height={400}
           />
@@ -40,7 +40,7 @@ const Carousel = () => {
           <Image
             priority={true}
             alt="Slider Text"
-            src="/000000.png"
+            src="/02.jpg"
             width={760}
             height={400}
           />
@@ -55,7 +55,7 @@ const Carousel = () => {
           <Image
             priority={true}
             alt="Slider Text"
-            src="/000000.png"
+            src="/03.jpg"
             width={760}
             height={400}
           />
