@@ -30,7 +30,7 @@ const Shop = () => {
     }
   }, [allItems.data]);
 
-  const pages = paginate(items, 10);
+  const pages = paginate(items, 12);
 
   const handlePrevious = () => {
     router.push({ query: { ...router.query, p: currentPage } });

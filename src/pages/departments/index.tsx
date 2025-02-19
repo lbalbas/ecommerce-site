@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Head from "next/head";
 import LoadingBlock from "../../components/Loading";
+
 interface Departments {
   id: string;
   name: string;
@@ -12,7 +13,7 @@ interface Departments {
 const Departments = () => {
   const [depts, setDepts] = useState<Departments[]>([]);
   const deptsData = trpc.departments.useQuery();
-
+  
   useEffect(() => {
     if (deptsData.data) setDepts(deptsData.data);
   }, [deptsData.data]);
@@ -40,14 +41,13 @@ const Departments = () => {
           return (
             <Link
               key={dept.id}
-              className="relative w-full h-full flex rounded-2xl justify-center items-center"
+              className="relative w-full h-48 flex rounded-2xl justify-center items-center"
               href={"/departments/" + dept.id}
             >
               <Image
                 alt="Departments"
                 className="rounded-2xl"
-                width={290}
-                height={100}
+                fill
                 src={dept.image}
               />
               <div className="absolute rounded-2xl bg-raisin opacity-50 w-full h-full flex items-center justify-center"></div>

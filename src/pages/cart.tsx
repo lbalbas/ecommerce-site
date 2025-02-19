@@ -66,6 +66,15 @@ const CartPage = () => {
         <title>Your Shopping Cart</title>
       </Head>
       <div className="max-h-[60vh] md:max-h-[75vh] flex md:col-span-3 gap-6 flex-col overflow-y-scroll">
+        {
+          itemsOnCart.length === 0 && (
+            <div className="h-96 flex flex-col items-center justify-center gap-4">
+              <h3 className="my-0 tracking-wider md:text-xl">
+                <strong>YOUR CART IS EMPTY</strong>
+              </h3>
+            </div>
+          )
+        }
         {itemsOnCart.map((item) => {
           const itemInCart = itemsOnCart.find(
             (cartItem) => cartItem.id === item.id

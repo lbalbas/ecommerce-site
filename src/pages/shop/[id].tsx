@@ -89,8 +89,9 @@ const ProductPage = () => {
 							fill
 						/>
 					</div>
-					<div className="flex w-full justify-center items-center">
-						<div className="mt-4 lg:mt-0 w-full md:w-3/6 lg:w-5/6 flex-col flex">
+					<div className="flex h-full w-full justify-center items-center">
+						<div className="mt-4 lg:mt-6 w-full md:w-3/6 lg:w-5/6 flex-col flex">
+							<div>
 							<Link
 								href={`/departments/${item.department}`}
 								className="flex items-center w-fit uppercase tracking-wide text-sm text-gray-600"
@@ -110,7 +111,8 @@ const ProductPage = () => {
 							<p className="my-2 text-center md:text-left lg:my-4 text-gray-700">
 								{item.description}
 							</p>
-							<div className="flex flex-col md:flex-row items-center w-full justify-around lg:justify-end gap-4 md:gap-8">
+							</div>
+							<div className="flex flex-col md:flex-row items-center w-full justify-around my-4 gap-4 md:gap-8">
 								<Counter
 									increase={increaseItemCount}
 									decrease={decreaseItemCount}
@@ -118,7 +120,6 @@ const ProductPage = () => {
 									stock={item.stock}
 									itemInCartQuantity={itemInCartQuantity}
 								/>
-
 								<Button
 									disabled={item.stock === 0}
 									onClick={() => {
@@ -148,7 +149,9 @@ const ProductPage = () => {
 										</span>
 									</div>
 								</Button>
+
 							</div>
+							
 						</div>
 					</div>
 				</div>

@@ -62,7 +62,7 @@ export default function Home() {
               className="rounded-2xl"
               height={185}
               width={370}
-              src="/000000 (1).png"
+              src="/departments.jpg"
             />
             <div className="absolute rounded-2xl bg-vanilla opacity-50 w-full h-full flex items-center justify-center"></div>
             <span className="absolute tracking-widest uppercase font-bold text-raisin">
@@ -78,7 +78,7 @@ export default function Home() {
               className="rounded-2xl"
               height={185}
               width={370}
-              src="/000000 (1).png"
+              src="/all-products.jpg"
             />
             <div className="absolute rounded-2xl bg-vanilla opacity-50 w-full h-full flex items-center justify-center"></div>
             <span className="absolute tracking-widest uppercase font-bold text-raisin">
