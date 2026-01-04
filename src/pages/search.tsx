@@ -23,10 +23,12 @@ const Search = () => {
     { search: stringSearch },
     {
       enabled: stringSearch !== "",
-    }
+    },
   );
 
   const items = searchItems.data;
+
+  console.log(items);
 
   if (searchItems.isLoading) {
     return (
