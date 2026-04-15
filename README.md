@@ -1,38 +1,67 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# E-Commerce Mockup 🛒
 
-## Getting Started
+A fullstack e-commerce application built with the T3 stack. Features a persistent shopping cart, product search, and Stripe Checkout integration for secure payment processing.
 
-First, run the development server:
+## ✨ Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+- **Product Browsing:** Browse products with image carousels and detailed product pages.
+- **Search:** Find products quickly with built-in search functionality.
+- **Persistent Cart:** Shopping cart state persists across sessions via localStorage.
+- **Stripe Checkout:** Secure payment processing through Stripe's Checkout API.
+- **Responsive Design:** Fully responsive UI built with Tailwind CSS.
+
+## 🛠️ Tech Stack
+
+- **Framework:** [Next.js](https://nextjs.org) (Pages Router)
+- **Language:** [TypeScript](https://www.typescriptlang.org/)
+- **ORM:** [Prisma](https://prisma.io)
+- **Styling:** [Tailwind CSS](https://tailwindcss.com)
+- **API:** [tRPC](https://trpc.io)
+- **Database:** PostgreSQL (via Prisma)
+- **Payments:** [Stripe](https://stripe.com/)
+- **UI Components:** [Embla Carousel](https://www.embla-carousel.com/), [Heroicons](https://heroicons.com/)
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js installed
+- pnpm
+- A Stripe account (test mode)
+- A PostgreSQL database
+
+### Installation
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/lbalbas/ecommerce-site.git
+   cd ecommerce-site
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   pnpm install
+   ```
+
+3. **Set up environment variables:**
+   Configure your database URL and Stripe API keys in a `.env` file.
+
+4. **Prepare the database:**
+   ```bash
+   npx prisma db push
+   ```
+
+5. **Start the development server:**
+   ```bash
+   pnpm run dev
+   ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## 🔗 Live Demo
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+[https://ecommerce-site-orpin.vercel.app](https://ecommerce-site-orpin.vercel.app)
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## 📄 License
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+This project is open-source and available under the MIT License.
