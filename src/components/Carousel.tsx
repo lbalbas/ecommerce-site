@@ -18,18 +18,18 @@ const Carousel = () => {
 
   return (
     <div
-      className="row-start-1 rounded-2xl md:col-start-2 md:col-end-4 md:row-span-2 overflow-hidden"
+      className="row-start-1 rounded-2xl md:col-start-2 md:col-end-4 md:row-span-2 overflow-hidden h-full"
       ref={emblaRef}
     >
-      <div className="flex">
+      <div className="flex h-full">
         <div className="relative h-full min-w-0 grow-0 shrink-0 basis-full">
           <Image
             priority={true}
             alt="Slider Text"
             src="/01.jpg"
-            width={760}
-            height={400}
-            className="w-full h-full object-cover block"
+            fill
+            sizes="(max-width: 768px) 100vw, 66vw"
+            className="object-cover"
           />
           <div className="p-4 bottom-0 absolute text-xl bg-raisin bg-opacity-75 z-99 w-full h-16">
             <span className="text-ivory font-bold tracking-wider">
@@ -42,9 +42,9 @@ const Carousel = () => {
             priority={true}
             alt="Slider Text"
             src="/02.jpg"
-            width={760}
-            height={400}
-            className="w-full h-full object-cover block"
+            fill
+            sizes="(max-width: 768px) 100vw, 66vw"
+            className="object-cover"
           />
           <div className="p-4 bottom-0 absolute text-xl bg-raisin bg-opacity-75 z-99 w-full h-16">
             <span className="text-ivory font-bold tracking-wider">Hello</span>
@@ -58,9 +58,9 @@ const Carousel = () => {
             priority={true}
             alt="Slider Text"
             src="/03.jpg"
-            width={760}
-            height={400}
-            className="w-full h-full object-cover block"
+            fill
+            sizes="(max-width: 768px) 100vw, 66vw"
+            className="object-cover"
           />
           <div className="p-4 bottom-0 absolute text-xl bg-raisin bg-opacity-75 z-99 w-full h-16">
             <span className="text-ivory font-bold tracking-wider">
