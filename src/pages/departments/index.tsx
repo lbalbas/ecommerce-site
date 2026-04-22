@@ -46,8 +46,9 @@ const Departments = () => {
             >
               <Image
                 alt="Departments"
-                className="rounded-2xl"
+                className="rounded-2xl object-cover"
                 fill
+                sizes="(max-width: 768px) 50vw, 33vw"
                 src={dept.image}
               />
               <div className="absolute rounded-2xl bg-raisin opacity-50 w-full h-full flex items-center justify-center"></div>
