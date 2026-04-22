@@ -9,15 +9,15 @@ const ProductItem = (props: ProductProps) => {
     return (
       <Link
         href={"/shop/" + id}
-        className="group/item h-64 flex flex-col items-center"
+        className="group/item flex flex-col items-center gap-3 py-2"
       >
-        <div className="relative h-36 w-36 md:h-[175px] md:w-[175px]">
+        <div className="relative aspect-square w-36 md:w-[175px] rounded-2xl overflow-hidden bg-white shadow-sm">
           <Image
-            className="rounded-2xl"
+            className="object-cover"
             alt={item}
             src={thumbnail}
-            width={175}
-            height={175}
+            fill
+            sizes="(max-width: 768px) 144px, 175px"
           />
         </div>
         <p className="text-center font-bold lg:font-medium">{item}</p>
@@ -29,13 +29,15 @@ const ProductItem = (props: ProductProps) => {
     <div className="w-9/12 gap-4 grid grid-cols-3">
       <div className="h-full flex items-center w-full">
         <Link href={"/shop/" + id} className="flex flex-col items-center">
-          <Image
-            className="rounded-2xl"
-            alt={item}
-            src={thumbnail}
-            width={140}
-            height={140}
-          />
+          <div className="relative aspect-square w-[140px] rounded-2xl overflow-hidden bg-white shadow-sm">
+            <Image
+              className="object-cover"
+              alt={item}
+              src={thumbnail}
+              fill
+              sizes="140px"
+            />
+          </div>
         </Link>
       </div>
       <div className="h-full w-full col-span-2">
@@ -45,5 +47,4 @@ const ProductItem = (props: ProductProps) => {
     </div>
   );
 };
-
 export default ProductItem;
