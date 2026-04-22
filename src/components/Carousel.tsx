@@ -29,6 +29,7 @@ const Carousel = () => {
             src="/01.jpg"
             width={760}
             height={400}
+            className="w-full h-full object-cover block"
           />
           <div className="p-4 bottom-0 absolute text-xl bg-raisin bg-opacity-75 z-99 w-full h-16">
             <span className="text-ivory font-bold tracking-wider">
@@ -43,6 +44,7 @@ const Carousel = () => {
             src="/02.jpg"
             width={760}
             height={400}
+            className="w-full h-full object-cover block"
           />
           <div className="p-4 bottom-0 absolute text-xl bg-raisin bg-opacity-75 z-99 w-full h-16">
             <span className="text-ivory font-bold tracking-wider">Hello</span>
@@ -58,6 +60,7 @@ const Carousel = () => {
             src="/03.jpg"
             width={760}
             height={400}
+            className="w-full h-full object-cover block"
           />
           <div className="p-4 bottom-0 absolute text-xl bg-raisin bg-opacity-75 z-99 w-full h-16">
             <span className="text-ivory font-bold tracking-wider">
