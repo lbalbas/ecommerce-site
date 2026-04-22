@@ -2,9 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-gradient-to-br from-ivory to-vanilla/20 min-h-screen text-raisin antialiased;
+  }
+}
+
+@layer utilities {
+  .glass-card {
+    @apply bg-glassLight backdrop-blur-md border border-white/40 shadow-glass rounded-2xl;
+  }
+  
+  .glass-dark {
+    @apply bg-glassDark backdrop-blur-md border border-white/10 shadow-premium rounded-2xl;
+  }
+}
+
 @media (hover: hover) {
   .touchscreen-visible {
     opacity: 0;
+    transition: opacity 0.3s ease;
   }
 }
 
