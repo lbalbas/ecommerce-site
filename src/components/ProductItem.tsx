@@ -26,16 +26,16 @@ const ProductItem = (props: ProductProps) => {
     );
 
   return (
-    <div className="w-9/12 gap-4 grid grid-cols-3">
+    <div className="w-full gap-4 grid grid-cols-3">
       <div className="h-full flex items-center w-full">
         <Link href={"/shop/" + id} className="flex flex-col items-center">
-          <div className="relative aspect-square w-[140px] rounded-2xl overflow-hidden bg-white shadow-sm">
+          <div className="relative aspect-square w-[120px] rounded-2xl overflow-hidden bg-white shadow-sm">
             <Image
               className="object-cover"
               alt={item}
               src={thumbnail}
               fill
-              sizes="140px"
+              sizes="120px"
             />
           </div>
         </Link>
